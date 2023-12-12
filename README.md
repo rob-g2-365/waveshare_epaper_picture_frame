@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This project uses displays a image on an e-paper picture frame.  The picture switches once per day or controlled by the user.  Included are the list of materials and how to build it.
+This project uses displays a image on an e-paper picture frame.  The picture switches once per day.  Included are the list of materials and how to build it.
 
 ![E Picture frame display](./docs/images/epicture_frame.jpg)
 
@@ -80,7 +80,7 @@ Note that the Micro SD Card doesn't need much capacity.  A 1Gb Micro SD Card sho
 
 ## Other equipment needed
 
-### Other Hardware needed.
+### Other Hardware needed
 
 * 3D Printer
 * Soldering Iron
@@ -88,7 +88,7 @@ Note that the Micro SD Card doesn't need much capacity.  A 1Gb Micro SD Card sho
 
 Also a good idea to have troubleshooting equipment such as a multimeter and something to decode the SPI bus traffic.
 
-### Software needed.
+### Software needed
 
 Need the software Arduino IDE to build and download the code. I used version 2.1.0 but probably the latest version would work for you.
 
@@ -145,19 +145,19 @@ Gerber files are listed in the gerber directory.    I used OshPark to create the
 
 ## Assembly Instructions
 
-### Insert M2.5 brass inserts into the following holes.  
+### Insert M2.5 brass inserts into the following holes
 
 ![M2.5 Brass Insert Locations](./docs/images/epicture_frame_m2_5_insert_locations.jpg)
 
 Use a solder gun to insert the brass inserts.
 
 
-### Insert the M2 brass inserts into the following holes. 
+### Insert the M2 brass inserts into the following holes
 
 ![M2 Brass Insert Locations](./docs/images/epicture_frame_m2_insert_locations.jpg)
 
 
-### Solder components to PCB board.
+### Solder components to PCB board
 
 Solder components to the PCB board.  The silk screen shows the Component number location.
 
@@ -180,7 +180,7 @@ Solder components to the PCB board.  The silk screen shows the Component number 
 
 ![PCB board Silk Screen](./docs/images/pcb_board_silkscreen.jpg)
 
-### Assemble Main Part to Frame.
+### Assemble Main Part to Frame
 
 Remove the original back assembly from the picture frame. We do not need the back of the picture frame, the screws or the stand.  We only need the picture frame and the glass.
 
@@ -199,24 +199,25 @@ Assemble in the following order:
 
 Use the #4 wood screw holes to attach the 3D Printed main body to the wooden picture frame.
 
-### Put boards into main picture frame.  
+### Put boards into main picture frame
 
 ![Frame Back](./docs/images/frame_back_with_covers_removed.jpg)
 
-### Connect the ribbon cable to the E-Hat.
+### Connect the ribbon cable to the E-Hat
 
 The extension cable for the e-paper display is not needed.   Connect the ribbon cable from the display to the e-hat.  Use M2 roundhead screws to attach the e-hat.
 
-### Attach the battery case.
+### Attach the battery case
+
 Push battery wires through hole in the main body.  Attach battery case used M2 Flathead screws.
 
-### Attach the other components into the Main board.
+### Attach the other components into the Main board
 
 SD Card Adapter and Main Board used M2 Roundhead screws.  Be sure that the hole in the main body for the SD Card matches SDCard slot.
 
 Attach the main PCB board.  Make sure that the J3 screen is next to the hat connector and the SW1 is at the bottom of the display. 
 
-### Make connections to PCB board.
+### Make connections to PCB board
 
 Attach the battery to J4.  PCB board is marked red for positive and black for negative.
 
@@ -276,13 +277,13 @@ A sample sdcard image is located in:
 
 ![Sample SDCard Image](./sdcard_image)
 
-### SD Card Format and Files.
+### SD Card Format and Files
 
 The Micro SD Card doesn't have to be large since the images don't take up much space.  Format a Micro SD Card using Fat32.  Copy the processed image files to the root of the Micro SD Card.
 
 Insert Micro SD Card into the Micro SDCard Adapter for Arduino.
 
-##  Testing and Putting together.
+##  Testing and Putting together
 
 Verify that the image appears on the e-paper display.
 
