@@ -55,7 +55,7 @@ I am assuming in this project that the user knows how to do the following:
 
 ### Electrical Parts
 
-Note that all electronic parts are through hole.  Note that for the resistors, capactitors and diode there are many substitutes that can be used.
+Note that all electronic parts are through hole.  Note that for the resistors, capacitors and diode there are many substitutes that can be used.
 
 | Item           									 | Part Number         																						| Quantity  |
 | :---           									 | :---                     																				| :---      |
@@ -184,10 +184,10 @@ Solder components to the PCB board.  The silk screen shows the Component number 
 
 Remove the original back assembly from the picture frame. We do not need the back of the picture frame, the screws or the stand.  We only need the picture frame and the glass.
 
-Mark Drill Holes.  (See Picture)
-Drill holes using a (Find out which drill bit was used.) in picture frame.
+Mark Drill Holes.  (See frame back picture)
+Drill holes using a 5/64 or 2mm drill bit into the picture frame.
 
-Remove any stickers from the glass. Clean glass the glass using glass cleaner or isopropal alchol.   Ensure that no fingerprints are on the inside glass. 
+Remove any stickers from the glass. Clean glass the glass using glass cleaner or isopropyl alcohol.   Ensure that no fingerprints are on the inside glass. 
 
 Assemble in the following order:
 
