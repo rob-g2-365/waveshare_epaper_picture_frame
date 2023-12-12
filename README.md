@@ -221,7 +221,7 @@ Attach the main PCB board.  Make sure that the J3 screen is next to the hat conn
 
 Attach the battery to J4.  PCB board is marked red for positive and black for negative.
 
-Attach SD card connections to J2.  Chip select is closest to R1.  Please double check schematic.
+Attach SD card connections to J2.  Chip select is closest to R1.  Please double check [schematic](./docs/schematic.pdf).
 
 ![J2 SD Card Header](./docs/images/j2_sdcard_header.jpg)
 
