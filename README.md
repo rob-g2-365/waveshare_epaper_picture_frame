@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This project uses displays a image on an e-paper picture frame.  The picture switches once perf day or controlled by the user.  Included are the list of materials and how to build it.
+This project uses displays a image on an e-paper picture frame.  The picture switches once per day or controlled by the user.  Included are the list of materials and how to build it.
 
 ![E Picture frame display](./docs/images/epicture_frame.jpg)
 
@@ -274,7 +274,7 @@ This program also does the following:
 
 A sample sdcard image is located in:
 
-![Sample SDCard Image]{./sdcard_image)
+![Sample SDCard Image](./sdcard_image)
 
 ### SD Card Format and Files.
 
