@@ -232,16 +232,16 @@ Attach the Waveshare ehat SPI connections to J3.  Gray should match GRY on the b
 
 ### Arduino Code Overview
 
-I had to make a couple changes to the waveshare drivers.  They are:
+I had to make a couple changes to the Waveshare drivers.  They are:
 
-   A.  Changes with waveshare drivers (SPI Frequency and chips select)
-   B.  Reduced the SPI Clock Speed.
+   A.  Changes with Waveshare drivers (SPI frequency and chips select)
+   B.  Reduced the SPI clock speed.
 
 ### Download instructions
 
 Use Board type "Arduino Uno"
 
-Attach FTDI USB to serial connector to J1 Serial connector. 
+Attach FTDI USB to serial connector to J1 serial connector. 
 
 
 ##  Python code
