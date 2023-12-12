@@ -70,7 +70,7 @@ Note that all electronic parts are through hole.  Note that for the resistors, c
 | 100nF	Capacitor   							     | [K104K15X7RF5TL2](https://www.digikey.com/en/products/detail/vishay-beyschlag-draloric-bc-components/K104K15X7RF5TL2/286538) | 3         |
 | Diode General Purpose                              | [BAW75-TAP](https://www.digikey.com/en/products/detail/vishay-general-semiconductor-diodes-division/BAW75-TAP/4825763)       | 1         |
 | 10K Resistor                                       | [CF14JT10K0](https://www.digikey.com/en/products/detail/stackpole-electronics-inc/CF14JT10K0/1741265)    | 1         |
-| 100K                                               | [CF14JT100K](https://www.digikey.com/en/products/detail/stackpole-electronics-inc/CF14JT100K/1741263)    | 2         |        
+| 100K Resistor                                              | [CF14JT100K](https://www.digikey.com/en/products/detail/stackpole-electronics-inc/CF14JT100K/1741263)    | 2         |        
 | SW_Push SWITCH TACTILE SPST                        | [B3F-1000](https://www.digikey.com/en/products/detail/omron-electronics-inc-emc-div/B3F-1000/33150)      | 1         | 
 | 16Mhz 20pF Crystal                                 | [ECS-160-20-1X](https://www.digikey.com/en/products/detail/ecs-inc/ECS-160-20-1X/827525)                 | 1         |
 
