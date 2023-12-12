@@ -90,17 +90,17 @@ Also a good idea to have troubleshooting equipment such as a multimeter and some
 
 ### Software needed
 
-Need the software Arduino IDE to build and download the code. I used version 2.1.0 but probably the latest version would work for you.
+Need the software [Arduino IDE](https://www.arduino.cc/en/software) to build and download the code. I used version 2.1.0 but probably the latest version would work for you.
 
 #### Arduino IDE Packages
 
-| Package 				| Owner 			  | Current Version |
-| :---    				| :---  			  | :---            |
-| SD      				| Arduino SparkFun    | 1.2.4           |
-| LowPower_LowPowerLab  | LowerPowerLab       | 2.2 			|
-| Arduino Builtin       |                     | Built Into IDE  |
-| EEPROM				|                     | Built Into IDE  |
-| SPI                   |                     | Built Into IDE  |
+| Package 														| Owner 			  | Current Version |
+| :---    														| :---  			  | :---            |
+| Arduino Builtin                                               | Arduino             | Built Into IDE  |
+| [SD](https://www.arduino.cc/reference/en/libraries/sd/)      	| Arduino SparkFun    | 1.2.4           |
+| [LowPower_LowPowerLab](https://www.arduino.cc/reference/en/libraries/lowpower_lowpowerlab/)  | LowerPowerLab       | 2.2 			|
+| [EEPROM](https://docs.arduino.cc/learn/built-in-libraries/eeprom)	                           | Arduino                    | Built Into IDE  |
+| [SPI](https://www.arduino.cc/reference/en/language/functions/communication/spi/)             | Arduino                    | Built Into IDE  |
 
 ### Python environment
 
@@ -292,8 +292,13 @@ Attach the 3D printed covers.
 ![Picture Frame Back](./docs/images/frame_back.jpg)
 
 
+### Additional Resources
 
-	
+[Waveshare 7.3inch e-Paper HAT (F) Manual](https://www.waveshare.com/wiki/7.3inch_e-Paper_HAT_(F))
+
+[e Paper with Arduino and Raspberry Pi](https://www.youtube.com/watch?v=4onIqHClh2s&t=601s)
+
+[Trolling My Mom With an E-Paper Picture](https://youtu.be/YawP9RjPcJA)
 	
 
 
