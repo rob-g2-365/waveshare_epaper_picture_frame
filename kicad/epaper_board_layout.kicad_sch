@@ -1,0 +1,60 @@
+(kicad_sch (version 20230121) (generator eeschema)
+
+  (uuid e3b1e824-2fe0-40f4-81c0-a3915952426b)
+
+  (paper "A4")
+
+  (title_block
+    (title "Arduino Waveshare 7.3F e-paper Dislay")
+    (date "2023-04-14")
+    (rev "V01")
+    (comment 2 "creativecommons.org/licenses/by/4.0")
+    (comment 3 "License: CC BY 4.0")
+    (comment 4 "Author: Robert Gorsegner")
+  )
+
+  (lib_symbols
+  )
+
+
+  (sheet (at 140.97 82.55) (size 29.21 17.78) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid 9d2591fc-d2e2-4b8a-a8a8-120035ff8a59)
+    (property "Sheetname" "Connectors" (at 140.97 81.8384 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "connectors_page.kicad_sch" (at 140.97 100.9146 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (property "Field2" "" (at 140.97 82.55 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "epaper_board_layout"
+        (path "/e3b1e824-2fe0-40f4-81c0-a3915952426b" (page "3"))
+      )
+    )
+  )
+
+  (sheet (at 87.63 82.55) (size 30.48 17.78) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid d4ff5ade-77fa-490a-a921-760304d03ec6)
+    (property "Sheetname" "atmega328p" (at 87.63 81.8384 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "atmega328p.kicad_sch" (at 87.63 100.9146 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "epaper_board_layout"
+        (path "/e3b1e824-2fe0-40f4-81c0-a3915952426b" (page "2"))
+      )
+    )
+  )
+
+  (sheet_instances
+    (path "/" (page "1"))
+  )
+)

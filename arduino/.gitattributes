@@ -1,0 +1,3 @@
+*.ino eol=crlf
+*.cpp eol=crlf
+*.h eol=crlf

@@ -1,0 +1,3 @@
+*.kicad_prl eol=lf
+*.kicad_pro eol=lf
+*.xml eol=lf
