@@ -244,12 +244,29 @@ Use Board type "Arduino Uno"
 
 Attach FTDI USB to serial connector to J1 serial connector. 
 
+### Enable Serial Debug
+
+If you run into problems you may want to enable serial debugging.  To enable serial debug out, uncomment line 50 
+
+<pre>
+// Include this flag to turn on serial logging.
+// #define SERIAL_DEBUG
+</pre>
+
+The last failure is saved in the eeprom.  When booting the errorcode is outputed over the serial port.   The errorcodes are listed in line 36 of debug.h.
+<pre>
+#define ERRORCODE_TEST                        0
+#define ERRORCODE_EPAPER_INIT_FAILED          0x101
+.
+.
+</pre>
+
 
 ##  Python code
 
 ### Preprocessing portrait images
 
-Images that are formatted as portait may need to be cropped so that faces and important details may be shown.
+Images that are formatted as portrait may need to be cropped so that faces and important details may be shown.
 
 ### Python Command line arguments
 
