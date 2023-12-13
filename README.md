@@ -246,7 +246,7 @@ Attach FTDI USB to serial connector to J1 serial connector.
 
 ### Enable Serial Debug
 
-If you run into problems you may want to enable serial debugging.  To enable serial debug out, uncomment line 50 
+If you run into problems you may want to enable serial debugging.  To enable serial debug out, uncomment line 50. 
 
 <pre>
 // Include this flag to turn on serial logging.
@@ -262,7 +262,7 @@ The last failure is saved in the eeprom.  When booting the errorcode is outputed
 </pre>
 
 
-##  Python code
+## Python code
 
 ### Preprocessing portrait images
 
@@ -270,7 +270,9 @@ Images that are formatted as portrait may need to be cropped so that faces and i
 
 ### Python Command line arguments
 
-	process_image.py <Source Directory>  <Destinations Directory>
+<pre>
+	process_image.py &lt;Source Directory&gt;  &lt;Destinations Directory&gt;
+</pre>	
 	
 This command converts any images from the source directory or its children and into the destination directory.
 
