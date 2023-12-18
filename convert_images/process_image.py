@@ -47,6 +47,10 @@ def open_file(filename):
     return Image.open(filename)
 
 
+def apply_exif_rotation_tag(img):
+    return ImageOps.exif_transpose(img)
+
+
 def mirror(img):
     return ImageOps.mirror(img)
 

@@ -23,7 +23,7 @@ I am assuming in this project that the user knows how to do the following:
 * [STL Files](./stl)
 * [Freecad code](./freecad)
 * [Arduino IDE code](./arduino)
-* [Image Converter](./image_converter)
+* [Convert Images](./convert_images)
 * [Sample SD Card Image](./sdcard_image)
 * [License file](.license)
 
@@ -271,7 +271,7 @@ Images that are formatted as portrait may need to be cropped so that faces and i
 ### Python Command line arguments
 
 <pre>
-	process_image.py &lt;Source Directory&gt;  &lt;Destinations Directory&gt;
+	convert_images.py &lt;Source Directory&gt;  &lt;Destinations Directory&gt;
 </pre>	
 	
 This command converts any images from the source directory or its children and into the destination directory.

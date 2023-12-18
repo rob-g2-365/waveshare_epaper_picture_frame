@@ -31,7 +31,7 @@ import random
 
 
 def get_image_files_list(source_dir):
-    #return img_file_list
+
     img_file_list = []
     expression = "([a-zA-Z0-9\\s_\\\\.\\-\\(\\):])+(.bmp|.png|.jpg|.jpeg)$"
     for root, subFolders, files in os.walk(source_dir):
@@ -50,14 +50,15 @@ def process_images( file_list, dest_dir):
     for i, srcImageFile in enumerate(file_list):
         print(srcImageFile)
         img1 = process_image.open_file(srcImageFile)
-        img2 = process_image.mirror(img1)
-        img3 = process_image.auto_contrast(img2)
-        img4 = process_image.saturation(img3)
-        img5 = process_image.crop_image_to_proper_ratio(img4)
-        img6 = process_image.resize_image(img5)
-        img7 = process_image.convert_image(img6)
+        img2 = process_image.apply_exif_rotation_tag(img1)
+        img3 = process_image.mirror(img2)
+        img4 = process_image.auto_contrast(img3)
+        img5 = process_image.saturation(img4)
+        img6 = process_image.crop_image_to_proper_ratio(img5)
+        img7 = process_image.resize_image(img6)
+        img8 = process_image.convert_image(img7)
         dest_file = os.path.join(dest_dir, dest_pic_filename(i))
-        img7.save(dest_file)
+        img8.save(dest_file)
 
 
 if __name__ == '__main__':
