@@ -1,5 +1,6 @@
 # Waveshare Epaper Picture Frame
 
+
 ## Introduction
 
 This project uses displays a image on an e-paper picture frame.  The picture switches once per day.  Included are the list of materials and how to build it.
@@ -16,7 +17,7 @@ I am assuming in this project that the user knows how to do the following:
 * Be able to use brass inserts using a soldering iron.
 * Run a python script.
 
-## Files list
+## File List
 
 * [Documentation](./docs)
 * [Gerber files](./gerber)
@@ -33,7 +34,7 @@ I am assuming in this project that the user knows how to do the following:
 * Display Size 5x7 inches or 10x18cm.
 * Battery life should be about a year with alkaline batteries.
 
-## Parts list
+## Parts List
 
 ### Basic Parts
 | Item           | Quantity  		 | Notes |
@@ -78,9 +79,9 @@ Need a male housing connector set row. DuPont style.  This is in order to make a
 
 Note that the Micro SD Card doesn't need much capacity.  A 1Gb Micro SD Card should work.
 
-## Other equipment needed
+## Other Equipment Needed
 
-### Other Hardware needed
+### Other Hardware Needed
 
 * 3D Printer
 * Soldering Iron
@@ -88,7 +89,7 @@ Note that the Micro SD Card doesn't need much capacity.  A 1Gb Micro SD Card sho
 
 Also a good idea to have troubleshooting equipment such as a multimeter and something to decode the SPI bus traffic.
 
-### Software needed
+### Software Needed
 
 Need the software [Arduino IDE](https://www.arduino.cc/en/software) to build and download the code. I used version 2.1.0 but probably the latest version would work for you.
 
@@ -102,7 +103,7 @@ Need the software [Arduino IDE](https://www.arduino.cc/en/software) to build and
 | [EEPROM](https://docs.arduino.cc/learn/built-in-libraries/eeprom)	                           | Arduino                    | Built Into IDE  |
 | [SPI](https://www.arduino.cc/reference/en/language/functions/communication/spi/)             | Arduino                    | Built Into IDE  |
 
-### Python environment
+### Python Environment
 
 I used Python 3.9 with the Pillow (Python Image Library) 9.3.0 package installed.  The latest of each should work.
 
@@ -113,9 +114,9 @@ I used Python 3.9 with the Pillow (Python Image Library) 9.3.0 package installed
 | Freecad               | 0.21.2       |
 | KiCad                 | 7.0          |
 
-## Printing instructions
+## Printing Instructions
 
-### Printer settings
+### Printer Settings
 
 | Settings  |  Used      |  Notes |
 | :---      | :---       | :---   |
@@ -127,7 +128,7 @@ I used Python 3.9 with the Pillow (Python Image Library) 9.3.0 package installed
 | Supports  | Only Touching Build plate |   |
 
 
-### 3D Printed Parts list
+### 3D Printed Parts List
 
 | Part          	|  Picture |
 | :---          	| :---     |
@@ -139,25 +140,25 @@ I used Python 3.9 with the Pillow (Python Image Library) 9.3.0 package installed
 | Frame Border      | ![Frame Border](./docs/images/epicture_frame-Part-Frame-Border.jpg)  |
 
 
-## PCB Board instructions
+## PCB Board Instructions
 
 Gerber files are listed in the gerber directory.    I used OshPark to create the PCBs, but you should be able to use other vendors.
 
 ## Assembly Instructions
 
-### Insert M2.5 brass inserts into the following holes
+### Insert the M2.5 Brass Inserts into the Following Holes
 
 ![M2.5 Brass Insert Locations](./docs/images/epicture_frame_m2_5_insert_locations.jpg)
 
 Use a solder gun to insert the brass inserts.
 
 
-### Insert the M2 brass inserts into the following holes
+### Insert the M2 Brass Inserts into the Following Holes
 
 ![M2 Brass Insert Locations](./docs/images/epicture_frame_m2_insert_locations.jpg)
 
 
-### Solder components to PCB board
+### Solder Components to PCB Board
 
 Solder components to the PCB board.  The silk screen shows the Component number location.
 
@@ -199,25 +200,25 @@ Assemble in the following order:
 
 Use the #4 wood screw holes to attach the 3D Printed main body to the wooden picture frame.
 
-### Put boards into main picture frame
+### Put Boards into Main Picture Frame
 
 ![Frame Back](./docs/images/frame_back_with_covers_removed.jpg)
 
-### Connect the ribbon cable to the E-Hat
+### Connect the Ribbon Cable to the E-Hat
 
 The extension cable for the e-paper display is not needed.   Connect the ribbon cable from the display to the e-hat.  Use M2 roundhead screws to attach the e-hat.
 
-### Attach the battery case
+### Attach the Battery Case
 
 Push battery wires through hole in the main body.  Attach battery case used M2 Flathead screws.
 
-### Attach the other components into the Main board
+### Attach the Other Components into the Main Board
 
 SD Card Adapter and Main Board used M2 Roundhead screws.  Be sure that the hole in the main body for the SD Card matches SDCard slot.
 
 Attach the main PCB board.  Make sure that the J3 screen is next to the hat connector and the SW1 is at the bottom of the display. 
 
-### Make connections to PCB board
+### Make connections to PCB Board
 
 Attach the battery to J4.  PCB board is marked red for positive and black for negative.
 
@@ -238,7 +239,7 @@ I had to make a couple changes to the Waveshare drivers.  They are:
    A.  Changes with Waveshare drivers (SPI frequency and chips select)
    B.  Reduced the SPI clock speed.
 
-### Download instructions
+### Download Instructions
 
 Use Board type "Arduino Uno"
 
@@ -262,13 +263,13 @@ The last failure is saved in the eeprom.  When booting the errorcode is outputed
 </pre>
 
 
-## Python code
+## Python Code
 
-### Preprocessing portrait images
+### Preprocessing Portrait Images
 
 Images that are formatted as portrait may need to be cropped so that faces and important details may be shown.
 
-### Python Command line arguments
+### Python Command line Arguments
 
 <pre>
 	convert_images.py &lt;Source Directory&gt;  &lt;Destinations Directory&gt;
@@ -290,7 +291,7 @@ This program also does the following:
 
 ## SD Card
 
-## Sample SDCard image
+## Sample SDCard Image
 
 A sample sdcard image is located in:
 
@@ -302,14 +303,13 @@ The Micro SD Card doesn't have to be large since the images don't take up much s
 
 Insert Micro SD Card into the Micro SDCard Adapter for Arduino.
 
-##  Testing and Putting together
+##  Testing and Putting it Together
 
 Verify that the image appears on the e-paper display.
 
 Attach the 3D printed covers.  
 
 ![Picture Frame Back](./docs/images/frame_back.jpg)
-
 
 ### Additional Resources
 
@@ -319,7 +319,6 @@ Attach the 3D printed covers.
 
 [Trolling My Mom With an E-Paper Picture](https://youtu.be/YawP9RjPcJA)
 	
-
 
 
 
