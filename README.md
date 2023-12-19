@@ -1,5 +1,21 @@
 # Waveshare Epaper Picture Frame
 
+# Table of Contents
+* [Introduction](#Introduction)
+* [Knowledge Assumptions](#Knowledge-Assumptions)
+* [File List](#File-List)
+* [Specifications](#Specifications)
+* [Parts List](#Parts-List)
+* [Other Equipment Needed](#Other-Equipment-Needed)
+* [Printing Instructions](#Printing-Instructions)
+* [PCB Board Instructions](#PCB-Board-Instructions)
+* [Assembly Instructions](#Assembly-Instructions)
+* [Arduino Code ](#Arduino-Code)
+* [Python Code](#Python-Code)
+* [SD Card](#SD-Card)
+* [Sample SDCard Image](#Sample-SDCard-Image)
+* [ Testing and Putting it Together](#Testing-and-Putting-it-Together)
+
 
 ## Introduction
 
@@ -319,7 +335,6 @@ Attach the 3D printed covers.
 
 [Trolling My Mom With an E-Paper Picture](https://youtu.be/YawP9RjPcJA)
 	
-
 
 
 
