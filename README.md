@@ -234,7 +234,7 @@ SD Card Adapter and Main Board used M2 Roundhead screws.  Be sure that the hole 
 
 Attach the main PCB board.  Make sure that the J3 screen is next to the hat connector and the SW1 is at the bottom of the display. 
 
-### Make connections to PCB Board
+### Make Connections to PCB Board
 
 Attach the battery to J4.  PCB board is marked red for positive and black for negative.
 
@@ -335,7 +335,6 @@ Attach the 3D printed covers.
 
 [Trolling My Mom With an E-Paper Picture](https://youtu.be/YawP9RjPcJA)
 	
-
 
 
 
