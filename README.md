@@ -13,9 +13,9 @@
 * [Arduino Code ](#Arduino-Code)
 * [Python Code](#Python-Code)
 * [SD Card](#SD-Card)
-* [Sample SDCard Image](#Sample-SDCard-Image)
 * [ Testing and Putting it Together](#Testing-and-Putting-it-Together)
-
+* [Battery Life and Power Consumption](#Battery-Life-and-Power-Consumption)
+* [Additional Resources](#Additional-Resources)
 
 ## Introduction
 
@@ -355,7 +355,6 @@ $$ = 652 (days) $$
 
 [Trolling My Mom With an E-Paper Picture](https://youtu.be/YawP9RjPcJA)
 	
-
 
 
 
