@@ -37,11 +37,12 @@ SOFTWARE.
 
 
 // Definitions
-#define PIN_POWER_SELECT 5
-#define PIN_SD_CHIP_SELECT 6
+#define PIN_POWER_SELECT    5
+#define PIN_SD_CHIP_SELECT  6
+#define PIN_MOSI            11
+
 #define SECONDS_IN_A_DAY  86400
 #define NUMBER_OF_SLEEP_LOOPS 10800  // Seconds in a day divided by 8s
-
 
 // Function declarations.
 int get_next_file_handle(SDFile &sdFile);
@@ -72,23 +73,18 @@ void setup() {
 
   PictureIndex::setPictureIndex(pictureIndex);
 }
-  
 
 /******************************************************************************
 function : 
       Main loop
 ******************************************************************************/
 void loop() {
-  // Turn on the Reference power and perform a small delay to make sure that 
-  // the devices are powered up
-  pinMode(PIN_POWER_SELECT, OUTPUT);
-  digitalWrite(PIN_POWER_SELECT, LOW);
-  delay(1000);
+
+  powerUpPeripherals();
 
   updateDisplayWithNewPicture();
 
-  // Turn off the reference power.  The power will remain off while sleeping.
-  digitalWrite(PIN_POWER_SELECT, HIGH);
+  powerDownPeripherals();
 
   while(sleep_loops < NUMBER_OF_SLEEP_LOOPS) {
     Debug::print("Sleeping\r\n");
@@ -148,7 +144,42 @@ end_serial:
   PictureIndex::updateInUsePictureIndex();
 }
 
-/**
+/******************************************************************************
+  Power up the SDCARD and E-Hat
+******************************************************************************/
+void powerUpPeripherals() {
+  // Set MOSI as an output.  When powered down it is set to an input to 
+  // conserve power.
+  pinMode(PIN_MOSI, OUTPUT);
+
+  // Set the CS pin high so the peripherals don't start reading the SPI bus
+  // when powered up.
+  digitalWrite(PIN_SD_CHIP_SELECT, HIGH);
+
+  // Turn on the peripheral power by setting power select low.
+  pinMode(PIN_POWER_SELECT, OUTPUT);
+  digitalWrite(PIN_POWER_SELECT, LOW);
+
+  // Allow a small delay for the peripherals to get power.
+  delay(500);
+}
+
+/******************************************************************************
+  Power down the SDCARD and E-Hat
+******************************************************************************/
+void powerDownPeripherals() {
+  // Turn off the peripheral power by setting the power select GPIO high.  
+  // The power will remain off while sleeping.
+  digitalWrite(PIN_POWER_SELECT, HIGH);
+
+  // Turn off power to MOSI and SDCARD chip select.
+  // If MOSI and the CS lines are high the SDCARD board will draw power.
+  // This is done by setting MOSI as an input and SD CS low.
+  pinMode(PIN_MOSI, INPUT);
+  digitalWrite(PIN_SD_CHIP_SELECT, LOW);
+}
+
+/******************************************************************************
   Get next file.  Remember to close the file handle after use.
 
   @param[out] sdFile
@@ -156,7 +187,7 @@ end_serial:
 
   @retval SUCCESS
   @retval FAILURE
-**/
+******************************************************************************/
 int getNextFileHandle(SDFile &sdFile) {
   char filename[MAX_8_3_FILENAME_SIZE];
 
