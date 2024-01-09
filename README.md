@@ -307,7 +307,7 @@ This program also does the following:
 
 ## SD Card
 
-## Sample SDCard Image
+### Sample SDCard Image
 
 A sample sdcard image is located in:
 
@@ -327,7 +327,27 @@ Attach the 3D printed covers.
 
 ![Picture Frame Back](./docs/images/frame_back.jpg)
 
-### Additional Resources
+## Battery Life and Power Consumption
+
+It takes about 134 seconds to change the image on the screen.  During this time it uses approximately 30mA. 
+
+$$ = 134 (seconds/switch) * 30 (mA) / 3600 (seconds/hour) $$
+
+$$ = 1.1 (mAh/switch) $$
+
+When idle I estimate the current draw is about 50 uA.
+
+$$ =  24 (hours) * 0.05 (mA) $$
+
+$$ = 1.2 (mAh) $$
+
+An approximate AAA battery life is about 1500mAh.  Therefore the battery life for the picture frame is:
+
+$$ = 1500 mAh / 2.3 (mAh/ day) $$
+
+$$ = 652 (days) $$
+
+## Additional Resources
 
 [Waveshare 7.3inch e-Paper HAT (F) Manual](https://www.waveshare.com/wiki/7.3inch_e-Paper_HAT_(F))
 
