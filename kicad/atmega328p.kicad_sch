@@ -2,12 +2,12 @@
 
   (uuid 36349591-b78f-49eb-aea2-6da9487de921)
 
-  (paper "A4")
+  (paper "USLegal")
 
   (title_block
     (title "Arduino Waveshare 7.3F e-paper Dislay")
-    (date "2023-04-14")
-    (rev "V01")
+    (date "2024-01-08")
+    (rev "V02")
     (comment 2 "creativecommons.org/licenses/by/4.0")
     (comment 3 "License: CC BY 4.0")
     (comment 4 "Author: Robert Gorsegner")
@@ -1015,12 +1015,6 @@
     (pin "2" (uuid 4f939fe7-c318-4a12-bd63-a93c8f33af73))
     (instances
       (project "epaper_board_layout"
-        (path "/e3b1e824-2fe0-40f4-81c0-a3915952426b"
-          (reference "C1") (unit 1)
-        )
-        (path "/e3b1e824-2fe0-40f4-81c0-a3915952426b/9d2591fc-d2e2-4b8a-a8a8-120035ff8a59"
-          (reference "C1") (unit 1)
-        )
         (path "/e3b1e824-2fe0-40f4-81c0-a3915952426b/d4ff5ade-77fa-490a-a921-760304d03ec6"
           (reference "C1") (unit 1)
         )
@@ -1031,7 +1025,7 @@
   (symbol (lib_id "power:GND") (at 95.25 129.54 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 09c6d618-8fc3-44b3-af11-e3abef9a8034)
-    (property "Reference" "#PWR01" (at 95.25 135.89 0)
+    (property "Reference" "#PWR02" (at 95.25 135.89 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 95.25 134.62 0)
@@ -1046,12 +1040,6 @@
     (pin "1" (uuid 657503d8-a2e5-4bbe-82a0-be4b5a365107))
     (instances
       (project "epaper_board_layout"
-        (path "/e3b1e824-2fe0-40f4-81c0-a3915952426b"
-          (reference "#PWR01") (unit 1)
-        )
-        (path "/e3b1e824-2fe0-40f4-81c0-a3915952426b/9d2591fc-d2e2-4b8a-a8a8-120035ff8a59"
-          (reference "#PWR02") (unit 1)
-        )
         (path "/e3b1e824-2fe0-40f4-81c0-a3915952426b/d4ff5ade-77fa-490a-a921-760304d03ec6"
           (reference "#PWR02") (unit 1)
         )
@@ -1059,28 +1047,28 @@
     )
   )
 
-  (symbol (lib_id "Simulation_SPICE:PMOS") (at 226.06 130.81 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+  (symbol (lib_id "Simulation_SPICE:PMOS") (at 226.06 130.81 0) (mirror x) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
     (uuid 0e8b4cb4-d509-4c0f-b9d8-2d7866bc7c0c)
-    (property "Reference" "Q1" (at 232.41 130.175 0)
+    (property "Reference" "Q1" (at 232.41 131.445 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "PMOS - LP0701N3-G" (at 232.41 132.715 0)
+    (property "Value" "PMOS - LP0701N3-G" (at 232.41 128.905 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Package_TO_SOT_THT:TO-92" (at 231.14 128.27 0)
+    (property "Footprint" "Package_TO_SOT_THT:TO-92" (at 231.14 133.35 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "https://www.digikey.com/en/products/detail/microchip-technology/lp0701n3-g/4902364" (at 226.06 143.51 0)
+    (property "Datasheet" "https://www.digikey.com/en/products/detail/microchip-technology/lp0701n3-g/4902364" (at 226.06 118.11 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Sim.Device" "PMOS" (at 226.06 147.955 0)
+    (property "Sim.Device" "PMOS" (at 226.06 113.665 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Sim.Type" "VDMOS" (at 226.06 149.86 0)
+    (property "Sim.Type" "VDMOS" (at 226.06 111.76 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Sim.Pins" "1=D 2=G 3=S" (at 226.06 146.05 0)
+    (property "Sim.Pins" "1=S 2=G 3=D" (at 226.06 115.57 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 1c367bac-3db9-4b4e-9bbe-1593cd51f4b1))
@@ -1113,12 +1101,6 @@
     (pin "1" (uuid dba2bcd8-6fe5-4da2-bf48-0444060107ec))
     (instances
       (project "epaper_board_layout"
-        (path "/e3b1e824-2fe0-40f4-81c0-a3915952426b"
-          (reference "#PWR03") (unit 1)
-        )
-        (path "/e3b1e824-2fe0-40f4-81c0-a3915952426b/9d2591fc-d2e2-4b8a-a8a8-120035ff8a59"
-          (reference "#PWR03") (unit 1)
-        )
         (path "/e3b1e824-2fe0-40f4-81c0-a3915952426b/d4ff5ade-77fa-490a-a921-760304d03ec6"
           (reference "#PWR03") (unit 1)
         )
@@ -1350,12 +1332,6 @@
     (pin "9" (uuid d1991330-834b-4995-8b5a-83d0af8d7a03))
     (instances
       (project "epaper_board_layout"
-        (path "/e3b1e824-2fe0-40f4-81c0-a3915952426b"
-          (reference "U1") (unit 1)
-        )
-        (path "/e3b1e824-2fe0-40f4-81c0-a3915952426b/9d2591fc-d2e2-4b8a-a8a8-120035ff8a59"
-          (reference "U1") (unit 1)
-        )
         (path "/e3b1e824-2fe0-40f4-81c0-a3915952426b/d4ff5ade-77fa-490a-a921-760304d03ec6"
           (reference "U1") (unit 1)
         )
@@ -1382,12 +1358,6 @@
     (pin "2" (uuid db6a1624-49b6-480d-a5ed-ffb9b29b2aa6))
     (instances
       (project "epaper_board_layout"
-        (path "/e3b1e824-2fe0-40f4-81c0-a3915952426b"
-          (reference "C2") (unit 1)
-        )
-        (path "/e3b1e824-2fe0-40f4-81c0-a3915952426b/9d2591fc-d2e2-4b8a-a8a8-120035ff8a59"
-          (reference "C2") (unit 1)
-        )
         (path "/e3b1e824-2fe0-40f4-81c0-a3915952426b/d4ff5ade-77fa-490a-a921-760304d03ec6"
           (reference "C2") (unit 1)
         )
@@ -1465,12 +1435,6 @@
     (pin "2" (uuid 5038e153-5930-42d9-8649-d947b81f4436))
     (instances
       (project "epaper_board_layout"
-        (path "/e3b1e824-2fe0-40f4-81c0-a3915952426b"
-          (reference "Y1") (unit 1)
-        )
-        (path "/e3b1e824-2fe0-40f4-81c0-a3915952426b/9d2591fc-d2e2-4b8a-a8a8-120035ff8a59"
-          (reference "Y1") (unit 1)
-        )
         (path "/e3b1e824-2fe0-40f4-81c0-a3915952426b/d4ff5ade-77fa-490a-a921-760304d03ec6"
           (reference "Y1") (unit 1)
         )
@@ -1481,7 +1445,7 @@
   (symbol (lib_id "power:VCC") (at 95.25 43.18 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid de840da7-a0e3-4405-bec5-7a6c8e2ad566)
-    (property "Reference" "#PWR02" (at 95.25 46.99 0)
+    (property "Reference" "#PWR01" (at 95.25 46.99 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VCC" (at 95.25 39.37 0)
@@ -1496,12 +1460,6 @@
     (pin "1" (uuid 3a717eea-abfa-4d07-b8dd-7f5fa39fcd47))
     (instances
       (project "epaper_board_layout"
-        (path "/e3b1e824-2fe0-40f4-81c0-a3915952426b"
-          (reference "#PWR02") (unit 1)
-        )
-        (path "/e3b1e824-2fe0-40f4-81c0-a3915952426b/9d2591fc-d2e2-4b8a-a8a8-120035ff8a59"
-          (reference "#PWR01") (unit 1)
-        )
         (path "/e3b1e824-2fe0-40f4-81c0-a3915952426b/d4ff5ade-77fa-490a-a921-760304d03ec6"
           (reference "#PWR01") (unit 1)
         )

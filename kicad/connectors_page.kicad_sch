@@ -2,12 +2,12 @@
 
   (uuid 4b1ff1ba-ebf4-4643-ba9f-1f692c3839cb)
 
-  (paper "A4")
+  (paper "USLegal")
 
   (title_block
     (title "Arduino Waveshare 7.3F e-paper Dislay")
-    (date "2023-04-14")
-    (rev "V01")
+    (date "2024-01-08")
+    (rev "V02")
     (comment 2 "creativecommons.org/licenses/by/4.0")
     (comment 3 "License: CC BY 4.0")
     (comment 4 "Author: Robert Gorsegner")
