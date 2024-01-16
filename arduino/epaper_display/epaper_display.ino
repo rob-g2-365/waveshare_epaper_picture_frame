@@ -171,10 +171,10 @@ void powerDownPeripherals() {
   // Turn off the peripheral power by setting the power select GPIO high.  
   // The power will remain off while sleeping.
   digitalWrite(PIN_POWER_SELECT, HIGH);
-
-  // Turn off power to MOSI and SDCARD chip select.
-  // If MOSI and the CS lines are high the SDCARD board will draw power.
-  // This is done by setting MOSI as an input and SD CS low.
+  
+  // If MOSI or the CS lines are high, the SD Card board will draw power on some
+  // SD Card boards.  This can be prevented by setting MOSI as an input and 
+  // SD CS low.
   pinMode(PIN_MOSI, INPUT);
   digitalWrite(PIN_SD_CHIP_SELECT, LOW);
 }
