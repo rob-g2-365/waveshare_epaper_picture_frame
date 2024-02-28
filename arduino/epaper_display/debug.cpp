@@ -31,6 +31,8 @@ SOFTWARE.
 #include "debug.h"
 #include "eeprom_data.h"
 
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+
 void Debug::serialBegin(int baudRate) {
 #ifdef SERIAL_DEBUG  
   Serial.begin(baudRate);
