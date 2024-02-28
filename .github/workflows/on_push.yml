@@ -14,6 +14,7 @@ jobs:
       - uses: arduino/compile-sketches@v1
         with:
           fqbn: arduino:avr:uno
+          verbose: true
           sketch-paths: arduino/epaper_display
           libraries: |
             - name: SD
