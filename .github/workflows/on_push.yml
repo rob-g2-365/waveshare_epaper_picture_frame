@@ -13,9 +13,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: arduino/compile-sketches@v1.1.0
         with:
-          fqbn: |
-            - arduino:avr:uno
-            - arduino:avr:pro
+          fqbn: arduino:avr:uno
           verbose: true
           sketch-paths: arduino/epaper_display
           libraries: |
