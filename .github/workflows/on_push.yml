@@ -1,0 +1,13 @@
+# Name of your workflow
+name: Aruduino Build on push workflow
+
+# Define the trigger events.
+on: [push]
+
+# Jobs run in parallel be default, each runs steps in sequence
+jobs:
+    # Jobs to print something out
+    say-hello:
+        runs-on: ubuntu-latest
+        steps:  
+          - run echo "Hello,GitHub Actions!"  
