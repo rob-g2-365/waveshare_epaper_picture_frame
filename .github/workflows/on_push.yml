@@ -2,7 +2,7 @@
 name: Aruduino Build on push workflow
 
 # Define the trigger events.
-on: [push]
+on: [push, check_run]
 
 # Jobs run in parallel be default, each runs steps in sequence
 jobs:
