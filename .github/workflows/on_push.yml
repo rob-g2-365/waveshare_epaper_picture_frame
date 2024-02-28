@@ -11,7 +11,7 @@ jobs:
     runs-on: [ubuntu-latest]
     steps:  
       - uses: actions/checkout@v2
-      - uses: arduino/compile-sketches@v1
+      - uses: arduino/compile-sketches@v1.1.0
         with:
           fqbn: arduino:avr:uno
           verbose: true
