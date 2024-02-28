@@ -6,8 +6,21 @@ on: [push, check_run]
 
 # Jobs run in parallel be default, each runs steps in sequence
 jobs:
-    # Jobs to print something out
-    say-hello:
-        runs-on: ubuntu-latest
-        steps:  
-          - run: echo "Hello,GitHub Actions!"  
+  # Build the ATMEGA-320P
+  compile-sketch:
+    runs-on: [ubuntu-latest]
+    steps:  
+      - uses: actions/checkout@v2
+      - uses: arduino/compile-sketches@v1
+        with:
+          fqbn: arduino:avr:uno
+          sketch-paths: arduino/epaper_display
+          libraries: |
+            - name: SD
+              version: 1.2.4
+            - name: LowPower_LowPowerLab
+              version: 2.2
+            - name: SPI
+              version: 1.0
+            - name: EEPROM
+              version: 2.0
