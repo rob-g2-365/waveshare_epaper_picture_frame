@@ -21,3 +21,4 @@ jobs:
             - name: SD
             - name: LowPower_LowPowerLab
             - name: EEPROM
+              version: "2.0"
