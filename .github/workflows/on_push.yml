@@ -20,3 +20,4 @@ jobs:
           libraries: |
             - name: SD
             - name: LowPower_LowPowerLab
+            - name: Arduino_builtin
