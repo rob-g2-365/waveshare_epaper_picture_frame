@@ -11,10 +11,11 @@ jobs:
     runs-on: [ubuntu-latest]
     steps:  
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v4.5.0
       - uses: arduino/compile-sketches@v1.1.0
         with:
-          fqbn: [arduino:avr:uno, arduino:avr:pro]
+          fqbn: |
+            - arduino:avr:uno
+            - arduino:avr:pro
           verbose: true
           sketch-paths: arduino/epaper_display
           libraries: |
