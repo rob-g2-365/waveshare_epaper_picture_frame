@@ -27,8 +27,8 @@ SOFTWARE.
 ******************************************************************************/
 #include "picture_index.h"
 
-static int PictureIndex::pictureIndex = 0;
-static int PictureIndex::inUsePictureIndex = 0;
+int PictureIndex::pictureIndex = 0;
+int PictureIndex::inUsePictureIndex = 0;
 
 /******************************************************************************
   Get next filename

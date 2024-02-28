@@ -52,7 +52,7 @@ SOFTWARE.
 
 class Debug {
   public:
-    static void print(char * msg );
+    static void print(const char * msg );
     static void serialBegin(int baud_rate) ;
     static void serialFlush();
     static void error(int errorCode);

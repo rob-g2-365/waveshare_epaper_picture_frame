@@ -328,6 +328,9 @@ void printHalfRow(char *buffer) {
     Serial.print(",");
   }
   Serial.print("\r\n");
+  #else
+  // Gets rid of the warning for an unused variable.
+  (void *)buffer;
   #endif // SERIAL_DEBUG
 }
 

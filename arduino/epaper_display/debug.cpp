@@ -31,25 +31,25 @@ SOFTWARE.
 #include "debug.h"
 #include "eeprom_data.h"
 
-static void Debug::serialBegin(int baudRate) {
+void Debug::serialBegin(int baudRate) {
 #ifdef SERIAL_DEBUG  
   Serial.begin(baudRate);
 #endif // SERIAL_DEBUG
 }
 
-static void Debug::serialFlush() {
+void Debug::serialFlush() {
 #ifdef SERIAL_DEBUG
   Serial.flush();
 #endif // SERIAL_DEBUG
 }
 
-static void Debug::print(char * msg) {
+void Debug::print(const char * msg) {
 #ifdef SERIAL_DEBUG
   Serial.print(msg);
 #endif // SERIAL_DEBUG
 }
 
-static void Debug::error(int errorCode) {
+void Debug::error(int errorCode) {
 
 #ifdef EEPROM_DEBUG
   EepromData::saveErrorPicIndex();
@@ -57,7 +57,7 @@ static void Debug::error(int errorCode) {
 #endif // EEPROM_DEBUG
 }
 
-static void Debug::printEepromErrorInfo() {
+void Debug::printEepromErrorInfo() {
 #if defined(SERIAL_DEBUG) && defined(EEPROM_DEBUG)
   int errorCode = EepromData::readErrorCode();
   if(errorCode == ERRORCODE_NONE) {

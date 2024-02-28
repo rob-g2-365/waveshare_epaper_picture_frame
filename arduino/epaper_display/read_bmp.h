@@ -30,7 +30,7 @@ SOFTWARE.
 #include <stdint.h>
 #include <SD.h>
 #include "debug.h"
-typedef struct BmpHeader {
+struct BmpHeader {
     uint16_t header_field;        // 0x00
     uint32_t size;                // 0x02
     uint16_t reserved1;           // 0x06
@@ -68,5 +68,5 @@ class ReadBMP {
 
 #define BMP_HEADER_FIELD_WIN 0x4D42
 
-#endif _H_READBMP
+#endif // _H_READBMP
 

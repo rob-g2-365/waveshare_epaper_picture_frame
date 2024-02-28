@@ -277,8 +277,8 @@ function :
 ******************************************************************************/
 void Epd::Clear(UBYTE color) {
     SendCommand(0x10);
-    for(int i=0; i<width/2; i++) {
-        for(int j=0; j<height; j++) {
+    for(int i=0; i<(int)(width/2); i++) {
+        for(int j=0; j<(int)height; j++) {
             SendData((color<<4)|color);
 		}
 	}
