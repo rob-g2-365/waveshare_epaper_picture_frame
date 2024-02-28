@@ -20,5 +20,4 @@ jobs:
           libraries: |
             - name: SD
             - name: LowPower_LowPowerLab
-            - name: SPI
             - name: EEPROM
