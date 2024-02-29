@@ -26,11 +26,11 @@ This project displays an image on an e-paper picture frame.  The picture switche
 ## Knowledge Assumptions
 I am assuming in this project that the user knows how to do the following:
 
-* Be able to read an electrical schematic.
+* Read an electrical schematic.
 * Basic soldering of through-hole components.
 * Configure and build a project using the Arduino IDE.
-* Be able to slice a 3d Model and send it to a 3d printer.
-* Be able to use brass inserts using a soldering iron.
+* Slice a 3d Model and send it to a 3d printer.
+* Put brass inserts into plastic using a soldering iron.
 * Run a Python script.
 
 ## File List
@@ -72,7 +72,7 @@ I am assuming in this project that the user knows how to do the following:
 
 ### Electrical Parts
 
-Note that all electronic parts are through-hole components.  Note that for the resistors, capacitors, and diode many substitutes can be used.
+Note that all electronic parts are through-hole components.  Note that many substitutes can be used for the resistors, capacitors, and diode.
 
 | Item           									 | Part Number         																						| Quantity  |
 | :---           									 | :---                     																				| :---      |
@@ -91,7 +91,7 @@ Note that all electronic parts are through-hole components.  Note that for the r
 | SW_Push SWITCH TACTILE SPST                        | [B3F-1000](https://www.digikey.com/en/products/detail/omron-electronics-inc-emc-div/B3F-1000/33150)      | 1         | 
 | 16Mhz 20pF Crystal                                 | [ECS-160-20-1X](https://www.digikey.com/en/products/detail/ecs-inc/ECS-160-20-1X/827525)                 | 1         |
 
-Need a package of straight DuPont-style male row connectors. This is to make the 1x2, 1x6 and 1x8 Connectors.  Also (10Cm) short multicolor Dupont Female to Female wires.
+We need a package of straight DuPont-style male row connectors in order to make the 1x2, 1x6, and 1x8 Connectors.  Also (10Cm) short multicolor Dupont Female to Female wires.
 
 Note that the Micro SD Card doesn't need much capacity.  A 1Gb Micro SD Card should work.
 
@@ -107,7 +107,7 @@ Also, it is a good idea to have troubleshooting equipment such as a multimeter a
 
 ### Software Needed
 
-Need the software [Arduino IDE](https://www.arduino.cc/en/software) to build and download the code. I used version 2.1.0 but probably the latest version would work for you.
+Need the software [Arduino IDE](https://www.arduino.cc/en/software) to build and download the code. I used version 2.1.0, but the latest version probably would work for you.
 
 #### Arduino IDE Packages
 
@@ -197,12 +197,12 @@ Solder components to the PCB board.  The silkscreen shows the Component number l
 
 ![PCB board Silk Screen](./docs/images/pcb_board_silkscreen.jpg)
 
-### Assemble Main Part to Frame
+### Assemble the Main Part to Frame
 
 Remove the original back assembly from the picture frame. We do not need the back of the picture frame, the screws, or the stand.  We only need the picture frame and the glass.
 
 Mark Drill Holes.  (See frame back picture)
-Drill holes using a 5/64 or 2mm drill bit into the picture frame.
+Drill holes into the picture frame using a 5/64 or 2mm drill bit.
 
 Remove any stickers from the glass. Clean glass the glass using glass cleaner or isopropyl alcohol.   Ensure that no fingerprints are on the inside glass. 
 
@@ -211,7 +211,7 @@ Assemble in the following order:
 1.  Wooden Frame
 2.  Glass
 3.  3D Printed Frame border
-4.  E-paper display (Be sure the protective covering is removed and that the e-paper display ribbon cable is at the top.)
+4.  E-paper display (Be sure the protective covering is removed and the e-paper display ribbon cable is at the top.)
 5.  3D Printed Main Body
 
 Use the #4 wood screw holes to attach the 3D Printed main body to the wooden picture frame.
@@ -232,7 +232,7 @@ Push battery wires through the holes in the main body.  Attach the battery case 
 
 SD Card Adapter and Main Board used M2 Roundhead screws.  Be sure that the hole in the main body for the SD Card matches the SD Card slot.
 
-Attach the main PCB board.  Make sure that the J3 screen is next to the hat connector and the SW1 is at the bottom of the display. 
+Attach the main PCB board.  Ensure that the J3 screen is next to the hat connector and the SW1 is at the bottom of the display. 
 
 ### Make Connections to PCB Board
 
@@ -263,14 +263,14 @@ Attach FTDI USB to serial connector to J1 serial connector.
 
 ### Enable Serial Debug
 
-If you run into problems you may want to enable serial debugging.  To enable serial debug out, uncomment line 50. 
+If you run into problems, you may want to enable serial debugging.  To enable serial debug out, uncomment line 50. 
 
 <pre>
 // Include this flag to turn on serial logging.
 // #define SERIAL_DEBUG
 </pre>
 
-The last failure is saved in the EEPROM.  When booting the error code is outputted over the serial port.   The error codes are listed in line 36 of debug.h.
+The last failure is saved in the EEPROM.  When booting, the error code is outputted over the serial port.   The error codes are listed in line 36 of debug.h.
 <pre>
 #define ERRORCODE_TEST                        0
 #define ERRORCODE_EPAPER_INIT_FAILED          0x101
@@ -291,17 +291,17 @@ Images that are formatted as portrait may need to be cropped so that faces and i
 	convert_images.py &lt;Source Directory&gt;  &lt;Destinations Directory&gt;
 </pre>	
 	
-This command converts any images from the source directory or its children into the destination directory.
+This command converts images from the source directory or its children into the destination directory.
 
-Images are listed in the following order:  pic_000.bmp, pic_001.bmp, pic_002.bmp, etc.
+Images in the destination directory are listed in the following order:  pic_000.bmp, pic_001.bmp, pic_002.bmp, etc.
 
 This program also does the following:  
 
 1.  Auto-adjust the contrast.
-2.  Turns up saturation so that the images don't look washed out.
-3.  Mirrors the image so that it looks correct from the picture frame.
+2.  Increases the saturation so the images don't look washed out.
+3.  Mirrors the image to looks correct when viewed from the picture frame.
 4.  Crops the image so the image size is correct.
-5.  Dithers the images so that only 7 colors are needed to display the image.
+5.  Dithers the images so that only seven colors are needed to display the image.
 6.  Randomizes the image's order.
 
 
@@ -315,7 +315,7 @@ A sample SD Card image is located in:
 
 ### SD Card Format and Files
 
-The Micro SD Card doesn't have to be large since the images don't take up much space.  Format a Micro SD Card using Fat32.  Copy the processed image files to the root of the Micro SD Card.
+The Micro SD Card capacity can be small since the images don't occupy much space.  Format a Micro SD Card using Fat32.  Copy the processed image files to the root of the Micro SD Card.
 
 Insert the Micro SD Card into the Micro SDCard Adapter for Arduino.
 
@@ -329,19 +329,19 @@ Attach the 3D-printed covers.
 
 ## Battery Life and Power Consumption
 
-It takes about 134 seconds to change the image on the screen.  During this time it uses approximately 30mA. 
+It takes about 134 seconds to change the image on the screen.  During this time, it uses approximately 30mA. 
 
 $$ = 134 (seconds/switch) * 30 (mA) / 3600 (seconds/hour) $$
 
 $$ = 1.1 (mAh/switch) $$
 
-When idle I estimate the current draw is about 50 uA.
+When idle, I the current draw is about 50 uA.
 
 $$ =  24 (hours) * 0.05 (mA) $$
 
 $$ = 1.2 (mAh) $$
 
-An approximate AAA battery life is about 1500mAh.  Therefore the battery life for the picture frame is:
+An approximate AAA battery life is about 1500mAh.  Therefore, the battery life for the picture frame is:
 
 $$ = 1500 mAh / 2.3 (mAh/ day) $$
 
