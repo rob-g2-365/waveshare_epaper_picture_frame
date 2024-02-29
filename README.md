@@ -13,7 +13,7 @@
 * [Arduino Code ](#Arduino-Code)
 * [Python Code](#Python-Code)
 * [SD Card](#SD-Card)
-* [ Testing and Putting it Together](#Testing-and-Putting-it-Together)
+* [Testing and Putting it Together](#Testing-and-Putting-it-Together)
 * [Battery Life and Power Consumption](#Battery-Life-and-Power-Consumption)
 * [Additional Resources](#Additional-Resources)
 
@@ -40,7 +40,7 @@ I am assuming in this project that the user knows how to do the following:
 * [STL Files](./stl)
 * [Freecad code](./freecad)
 * [Arduino IDE code](./arduino)
-* [Convert Images](./convert_images)
+* [Convert Images Script](./convert_images)
 * [Sample SD Card Image](./sdcard_image)
 * [License file](.license)
 
@@ -319,7 +319,7 @@ The Micro SD Card capacity can be small since the images don't occupy much space
 
 Insert the Micro SD Card into the Micro SDCard Adapter for Arduino.
 
-##  Testing and Putting it Together
+## Testing and Putting it Together
 
 Verify that the image appears on the e-paper display.
 
