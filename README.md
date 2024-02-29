@@ -297,7 +297,7 @@ Images in the destination directory are listed in the following order:  pic_000.
 
 This program also does the following:  
 
-1.  Auto-adjust the contrast.
+1.  Auto-adjusts the contrast.
 2.  Increases the saturation so the images don't look washed out.
 3.  Mirrors the image to looks correct when viewed from the picture frame.
 4.  Crops the image so the image size is correct.
@@ -335,7 +335,7 @@ $$ = 134 (seconds/switch) * 30 (mA) / 3600 (seconds/hour) $$
 
 $$ = 1.1 (mAh/switch) $$
 
-When idle, I the current draw is about 50 uA.
+When idle, the current draw is about 50 uA.
 
 $$ =  24 (hours) * 0.05 (mA) $$
 
