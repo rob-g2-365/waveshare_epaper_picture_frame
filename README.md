@@ -19,19 +19,19 @@
 
 ## Introduction
 
-This project uses displays a image on an e-paper picture frame.  The picture switches once per day.  Included are the list of materials and how to build it.
+This project displays an image on an e-paper picture frame.  The picture switches once per day.  Included are the list of materials and how to build it.
 
 ![E Picture frame display](./docs/images/epicture_frame.jpg)
 
 ## Knowledge Assumptions
 I am assuming in this project that the user knows how to do the following:
 
-* Be able to read a electrical schematic.
-* Basic soldering of through hole components.
+* Be able to read an electrical schematic.
+* Basic soldering of through-hole components.
 * Configure and build a project using the Arduino IDE.
 * Be able to slice a 3d Model and send it to a 3d printer.
 * Be able to use brass inserts using a soldering iron.
-* Run a python script.
+* Run a Python script.
 
 ## File List
 
@@ -72,7 +72,7 @@ I am assuming in this project that the user knows how to do the following:
 
 ### Electrical Parts
 
-Note that all electronic parts are through hole.  Note that for the resistors, capacitors and diode there are many substitutes that can be used.
+Note that all electronic parts are through-hole components.  Note that for the resistors, capacitors, and diode many substitutes can be used.
 
 | Item           									 | Part Number         																						| Quantity  |
 | :---           									 | :---                     																				| :---      |
@@ -91,7 +91,7 @@ Note that all electronic parts are through hole.  Note that for the resistors, c
 | SW_Push SWITCH TACTILE SPST                        | [B3F-1000](https://www.digikey.com/en/products/detail/omron-electronics-inc-emc-div/B3F-1000/33150)      | 1         | 
 | 16Mhz 20pF Crystal                                 | [ECS-160-20-1X](https://www.digikey.com/en/products/detail/ecs-inc/ECS-160-20-1X/827525)                 | 1         |
 
-Need a male housing connector set row. DuPont style.  This is in order to make a 1x2, 1x6 and 1x8 Connectors.  Also (10Cm) short multicolor Dupont Female to Female wires.
+Need a package of straight DuPont-style male row connectors. This is to make the 1x2, 1x6 and 1x8 Connectors.  Also (10Cm) short multicolor Dupont Female to Female wires.
 
 Note that the Micro SD Card doesn't need much capacity.  A 1Gb Micro SD Card should work.
 
@@ -103,7 +103,7 @@ Note that the Micro SD Card doesn't need much capacity.  A 1Gb Micro SD Card sho
 * Soldering Iron
 * [Arduino FTDI USB to Serial 5v Programmers](https://www.amazon.com/Serial-Adapter-Female-FT232RL-Windows/dp/B07RBK2P47) 
 
-Also a good idea to have troubleshooting equipment such as a multimeter and something to decode the SPI bus traffic.
+Also, it is a good idea to have troubleshooting equipment such as a multimeter and something to decode the SPI bus traffic.
 
 ### Software Needed
 
@@ -176,7 +176,7 @@ Use a solder gun to insert the brass inserts.
 
 ### Solder Components to PCB Board
 
-Solder components to the PCB board.  The silk screen shows the Component number location.
+Solder components to the PCB board.  The silkscreen shows the Component number location.
 
 | Component Number | Part  |
 | :---             | :---  |
@@ -199,7 +199,7 @@ Solder components to the PCB board.  The silk screen shows the Component number 
 
 ### Assemble Main Part to Frame
 
-Remove the original back assembly from the picture frame. We do not need the back of the picture frame, the screws or the stand.  We only need the picture frame and the glass.
+Remove the original back assembly from the picture frame. We do not need the back of the picture frame, the screws, or the stand.  We only need the picture frame and the glass.
 
 Mark Drill Holes.  (See frame back picture)
 Drill holes using a 5/64 or 2mm drill bit into the picture frame.
@@ -210,8 +210,8 @@ Assemble in the following order:
 
 1.  Wooden Frame
 2.  Glass
-3.  3D Printed Frame boarder
-4.  E paper display (Be sure protective covering is removed and that the epaper display ribbon cable is at the top.)
+3.  3D Printed Frame border
+4.  E-paper display (Be sure the protective covering is removed and that the e-paper display ribbon cable is at the top.)
 5.  3D Printed Main Body
 
 Use the #4 wood screw holes to attach the 3D Printed main body to the wooden picture frame.
@@ -226,11 +226,11 @@ The extension cable for the e-paper display is not needed.   Connect the ribbon 
 
 ### Attach the Battery Case
 
-Push battery wires through hole in the main body.  Attach battery case used M2 Flathead screws.
+Push battery wires through the holes in the main body.  Attach the battery case using M2 Flathead screws.
 
-### Attach the Other Components into the Main Board
+### Attach the Other Components to the Main Board
 
-SD Card Adapter and Main Board used M2 Roundhead screws.  Be sure that the hole in the main body for the SD Card matches SDCard slot.
+SD Card Adapter and Main Board used M2 Roundhead screws.  Be sure that the hole in the main body for the SD Card matches the SD Card slot.
 
 Attach the main PCB board.  Make sure that the J3 screen is next to the hat connector and the SW1 is at the bottom of the display. 
 
@@ -238,11 +238,11 @@ Attach the main PCB board.  Make sure that the J3 screen is next to the hat conn
 
 Attach the battery to J4.  PCB board is marked red for positive and black for negative.
 
-Attach SD card connections to J2.  Chip select is closest to R1.  Please double check [schematic](./docs/schematic.pdf).
+Attach SD card connections to J2.  Chip select is closest to R1.  Please double-check [schematic](./docs/schematic.pdf).
 
 ![J2 SD Card Header](./docs/images/j2_sdcard_header.jpg)
 
-Attach the Waveshare ehat SPI connections to J3.  Gray should match GRY on the board.  Note that the BLK wire may be purple.
+Attach the Waveshare e-hat SPI connections to J3.  Gray should match GRY on the board.  Note that the BLK wire may be purple.
 
 ![J3 Waveshare E-hat header](./docs/images/j3_ehat_header.jpg)
 
@@ -250,7 +250,7 @@ Attach the Waveshare ehat SPI connections to J3.  Gray should match GRY on the b
 
 ### Arduino Code Overview
 
-I had to make a couple changes to the Waveshare drivers.  They are:
+I had to make a couple of changes to the Waveshare drivers.  They are:
 
    A.  Changes with Waveshare drivers (SPI frequency and chips select)
    B.  Reduced the SPI clock speed.
@@ -270,7 +270,7 @@ If you run into problems you may want to enable serial debugging.  To enable ser
 // #define SERIAL_DEBUG
 </pre>
 
-The last failure is saved in the eeprom.  When booting the errorcode is outputed over the serial port.   The errorcodes are listed in line 36 of debug.h.
+The last failure is saved in the EEPROM.  When booting the error code is outputted over the serial port.   The error codes are listed in line 36 of debug.h.
 <pre>
 #define ERRORCODE_TEST                        0
 #define ERRORCODE_EPAPER_INIT_FAILED          0x101
@@ -285,19 +285,19 @@ The last failure is saved in the eeprom.  When booting the errorcode is outputed
 
 Images that are formatted as portrait may need to be cropped so that faces and important details may be shown.
 
-### Python Command line Arguments
+### Python Command-line Arguments
 
 <pre>
 	convert_images.py &lt;Source Directory&gt;  &lt;Destinations Directory&gt;
 </pre>	
 	
-This command converts any images from the source directory or its children and into the destination directory.
+This command converts any images from the source directory or its children into the destination directory.
 
-Images are listed in the following order:  pic_000.bmp, pic_001.bmp, pic_002.bmp etc.
+Images are listed in the following order:  pic_000.bmp, pic_001.bmp, pic_002.bmp, etc.
 
 This program also does the following:  
 
-1.  Auto adjust the contrast.
+1.  Auto-adjust the contrast.
 2.  Turns up saturation so that the images don't look washed out.
 3.  Mirrors the image so that it looks correct from the picture frame.
 4.  Crops the image so the image size is correct.
@@ -307,9 +307,9 @@ This program also does the following:
 
 ## SD Card
 
-### Sample SDCard Image
+### Sample SD Card Image
 
-A sample sdcard image is located in:
+A sample SD Card image is located in:
 
 ![Sample SDCard Image](./sdcard_image)
 
@@ -317,13 +317,13 @@ A sample sdcard image is located in:
 
 The Micro SD Card doesn't have to be large since the images don't take up much space.  Format a Micro SD Card using Fat32.  Copy the processed image files to the root of the Micro SD Card.
 
-Insert Micro SD Card into the Micro SDCard Adapter for Arduino.
+Insert the Micro SD Card into the Micro SDCard Adapter for Arduino.
 
 ##  Testing and Putting it Together
 
 Verify that the image appears on the e-paper display.
 
-Attach the 3D printed covers.  
+Attach the 3D-printed covers.  
 
 ![Picture Frame Back](./docs/images/frame_back.jpg)
 
