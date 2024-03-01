@@ -31,8 +31,10 @@ jobs:
       - name: Display Python version
         run: |
           PYTHONPATH="$PWD"/convert_images
-          echo PYTHONPATH
+          echo $PYTHONPATH
           cd tests
           python -c "import sys; print(sys.version)"
+          python -m pip install --upgrade pip
+          pip install Pillow
           python run_tests.py
 
