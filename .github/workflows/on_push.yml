@@ -29,5 +29,10 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
       - name: Display Python version
-        run: python -c "import sys; print(sys.version)"
+        run: |
+          PYTHONPATH="$PWD"/convert_images
+          echo PYTHONPATH
+          cd tests
+          python -c "import sys; print(sys.version)"
+          python run_tests.py
 
