@@ -73,7 +73,6 @@ class TestConvertImages(unittest.TestCase):
     def test_crop_image_to_proper_ratio(self):
         with process_image.open_file(TestConvertImages.IMAGE0_REL_PATH) as image:
             rotate_image = image.rotate(90, Image.Resampling.NEAREST, expand = 1)
-            print(rotate_image.size)
             new_image = process_image.crop_image_to_proper_ratio(rotate_image)
             self.assertEqual((1536, 922), new_image.size)
     
@@ -98,8 +97,6 @@ class TestConvertImages(unittest.TestCase):
             os.rmdir(TestConvertImages.SCRATCH_IMAGE)
         except OSError as e:
             print("Error: %s : %s" % (f, e.strerror))
-           
-
 
 if __name__ == '__main__':
     unittest.main()
