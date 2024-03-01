@@ -59,7 +59,7 @@ def convert_image(img):
     p = ImagePalette.ImagePalette("RGB", my_palette)
     pal_image = Image.new("P", (1, 1))
     pal_image.putpalette(p)
-    return img.quantize(dither=Image.FLOYDSTEINBERG, palette=pal_image)  #.convert('RGB')
+    return img.quantize(dither=Dither.FLOYDSTEINBERG, palette=pal_image)  #.convert('RGB')
 
 
 def crop_image_to_proper_ratio(img):

@@ -31,13 +31,13 @@ import random
 
 
 def get_image_files_list(source_dir):
-
     img_file_list = []
-    expression = "([a-zA-Z0-9\\s_\\\\.\\-\\(\\):])+(.bmp|.png|.jpg|.jpeg)$"
-    for root, subFolders, files in os.walk(source_dir):
+    expression = "([a-z0-9\\s_\\\\.\\-\\(\\):])+(.bmp|.png|.jpg|.jpeg)$"
+    source_dir_abs = os.path.abspath(source_dir)
+    for root, subFolders, files in os.walk(source_dir_abs):
         for file in files:
             file_path = os.path.join(root, file)
-            if re.match(expression, file):
+            if re.match(expression, file, re.IGNORECASE):
                 img_file_list.append(os.path.join(root, file_path))
     return img_file_list
 
@@ -49,16 +49,16 @@ def dest_pic_filename(num):
 def process_images( file_list, dest_dir):
     for i, srcImageFile in enumerate(file_list):
         print(srcImageFile)
-        img1 = process_image.open_file(srcImageFile)
-        img2 = process_image.apply_exif_rotation_tag(img1)
-        img3 = process_image.mirror(img2)
-        img4 = process_image.auto_contrast(img3)
-        img5 = process_image.saturation(img4)
-        img6 = process_image.crop_image_to_proper_ratio(img5)
-        img7 = process_image.resize_image(img6)
-        img8 = process_image.convert_image(img7)
-        dest_file = os.path.join(dest_dir, dest_pic_filename(i))
-        img8.save(dest_file)
+        with process_image.open_file(srcImageFile) as img1:
+            img2 = process_image.apply_exif_rotation_tag(img1)
+            img3 = process_image.mirror(img2)
+            img4 = process_image.auto_contrast(img3)
+            img5 = process_image.saturation(img4)
+            img6 = process_image.crop_image_to_proper_ratio(img5)
+            img7 = process_image.resize_image(img6)
+            img8 = process_image.convert_image(img7)
+            dest_file = os.path.join(dest_dir, dest_pic_filename(i))
+            img8.save(dest_file)
 
 
 if __name__ == '__main__':
