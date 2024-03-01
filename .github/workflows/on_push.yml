@@ -20,3 +20,14 @@ jobs:
             - name: SD
             - name: LowPower_LowPowerLab
             - name: Arduino_builtin
+
+  # Test the python image transformation code
+  test-convert-images:
+    runs-on: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v4
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
+
