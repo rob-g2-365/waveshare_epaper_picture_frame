@@ -1,5 +1,5 @@
 # Name of your workflow
-name: Aruduino Build on push workflow
+name: Test Building ATMEGA-320P binary and image process code on push workflow
 
 # Define the trigger events.
 on: [push, check_run]
