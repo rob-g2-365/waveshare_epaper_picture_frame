@@ -1,3 +1,27 @@
+##########################################################################
+# MIT License
+#
+# Copyright (c) 2024 Robert L Gorsegner II
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+# 
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+##########################################################################
+
 import unittest
 import os
 import glob
@@ -8,7 +32,7 @@ import process_image
 class TestConvertImages(unittest.TestCase):
     IMAGE0_SIZE = (2048, 1536)
     IMAGE0_RESIZED = (800, 480)
-    IMAGE0_REL_PATH = 'images\\IMG_20130702_134515.jpg'
+    IMAGE0_REL_PATH = 'images/IMG_20130702_134515.jpg'
     SCRATCH_IMAGE = "scratch_image"
     def testget_image_files_list(self):
         expected_file_names = ['IMG_20130702_134515.jpg', 'DSCN6796.JPG', 'DSCN6805.JPG']        
@@ -58,7 +82,7 @@ class TestConvertImages(unittest.TestCase):
             os.makedirs(TestConvertImages.SCRATCH_IMAGE)
         file_list = convert_images.get_image_files_list('images')
         convert_images.process_images(file_list, TestConvertImages.SCRATCH_IMAGE)
-        self.assertEqual(os.listdir(TestConvertImages.SCRATCH_IMAGE), ['pic_000.bmp', 'pic_001.bmp', 'pic_002.bmp'] )
+        self.assertEqual(sorted(os.listdir(TestConvertImages.SCRATCH_IMAGE)), ['pic_000.bmp', 'pic_001.bmp', 'pic_002.bmp'] )
         
         # Remove files in scratch directory
         if os.path.exists(TestConvertImages.SCRATCH_IMAGE):
