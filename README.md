@@ -329,23 +329,34 @@ Attach the 3D-printed covers.
 
 ## Battery Life and Power Consumption
 
-It takes about 134 seconds to change the image on the screen.  During this time, it uses approximately 30mA. 
+It takes about 134 seconds to change the image on the screen.  During this time, it uses approximately 40mA. 
 
-$$ = 134 (seconds/switch) * 30 (mA) / 3600 (seconds/hour) $$
+$$ = 134 (seconds/switch) * 40 (mA) / 3600 (seconds/hour) $$
 
-$$ = 1.1 (mAh/switch) $$
+$$ = 1.5 (mAh/switch) $$
 
-When idle, the current draw is about 50 uA.
+When idle, the current draw is about 10 uA.
 
-$$ =  24 (hours) * 0.05 (mA) $$
+$$ =  24 (hours) * 0.01 (mA) $$
 
-$$ = 1.2 (mAh) $$
+$$ = 0.3 (mAh) $$
 
-An approximate AAA battery life is about 1500mAh.  Therefore, the battery life for the picture frame is:
+An approximate alkaline AAA battery life is about 1200mAh.  However, the picture frame cannot use the full capacity of the battery.  
+Once the voltage goes below 3.8v, 1.25v per cell, the picture frame will stop working.  This is about 50% of the capacity.
 
-$$ = 1500 mAh / 2.3 (mAh/ day) $$
+Therefore, the battery life for the picture frame is:
 
-$$ = 652 (days) $$
+$$ = 1200 mAh * 50% / 1.8 (mAh/ day) $$
+
+$$ = 333 (days) $$
+
+## Possible improvements.
+
+### Use a ultra low I<sub>Q</sub> Boost Converter
+
+An ultra-low I<sub>Q</sub> boost converter is one option for more battery life.  This will allow the battery pack voltage to be functional down 
+to 2.7v, which is using the battery's full capacity. I don't know if using the full capacity of the battery will offset the leakage power lost through the boost converter.
+
 
 ## Additional Resources
 

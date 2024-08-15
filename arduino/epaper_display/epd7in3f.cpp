@@ -1,10 +1,10 @@
 /*****************************************************************************
-* | File      	:   EPD_7in3f.c
+* | File        :   EPD_7in3f.c
 * | Author      :   Waveshare team
 * | Function    :   7.3inch e-Paper (F)
 * | Info        :
 *----------------
-* |	This version:   V1.0
+* | This version:   V1.0
 * | Date        :   2022-10-21
 * | Info        :
 * -----------------------------------------------------------------------------
@@ -32,6 +32,7 @@
 #include <stdlib.h>
 #include <SPI.h>
 #include "epd7in3f.h"
+#include "debug.h"
 
 Epd::~Epd() {
 };
@@ -50,13 +51,18 @@ function :  Initialize the e-Paper register
 parameter:
 ******************************************************************************/
 int Epd::Init(void) {
+    int ret = SUCCESS;
     if (IfInit() != 0) {
-        return -1;
+        return FAILURE;
     }
     SPI.beginTransaction(SPISettings(EPD_SPI_SPEED, MSBFIRST, SPI_MODE0));
     Reset();
     DelayMs(20);
-    EPD_7IN3F_BusyHigh();
+    // Typically this wait is less than a second.
+    ret = EPD_7IN3F_BusyHigh(2L*1000L);
+    if(ret == FAILURE) {
+      goto end_init;
+    }
     
     SendCommand(0xAA);    // CMDH
     SendData(0x49);
@@ -142,9 +148,9 @@ int Epd::Init(void) {
 
     SendCommand(0xE6);   // TSSET
     SendData(0x00);
-
+end_init:
     SPI.endTransaction();
-    return 0;
+    return ret;
 }
 
 /**
@@ -163,11 +169,21 @@ void Epd::SendData(unsigned char data) {
     SpiTransfer(data);
 }
 
-void Epd::EPD_7IN3F_BusyHigh(void)// If BUSYN=0 then waiting
+/**
+ *  @brief: Waits for busy to go low.
+ *
+ */
+int Epd::EPD_7IN3F_BusyHigh(long maxWaitMs)// If BUSYN=0 then waiting
 {
+    long ms = 0;
     while(!DigitalRead(BUSY_PIN)) {
         DelayMs(1);
+        if(ms > maxWaitMs) {
+          return FAILURE;
+        }
+        ms++;
     }
+    return SUCCESS;
 }
 
 /**
@@ -184,21 +200,32 @@ void Epd::Reset(void) {
     DelayMs(20);    
 }
 
-void Epd::TurnOnDisplay(void) {
+int Epd::TurnOnDisplay(void) {
     SendCommand(0x04);  // POWER_ON
-    EPD_7IN3F_BusyHigh();
+    // Typically this wait is less then 1 second.
+    if(EPD_7IN3F_BusyHigh(2L * 1000L) == FAILURE){
+      return FAILURE;
+    }
+
 
     delay(100);
     
     SendCommand(0x12);  // DISPLAY_REFRESH
     SendData(0x00);
-    EPD_7IN3F_BusyHigh();
+    // Typically this wait is less then 1 minute.
+    if(EPD_7IN3F_BusyHigh(120L * 1000L) == FAILURE){
+      return FAILURE;
+    }
 
     delay(100);
 
     SendCommand(0x02);  // POWER_OFF
     SendData(0x00);
-    EPD_7IN3F_BusyHigh();
+    // Typically this wait is less then 1 second.
+    if(EPD_7IN3F_BusyHigh(2L * 1000L) == FAILURE){
+      return FAILURE;
+    }
+    return SUCCESS;
 }
 
 /******************************************************************************
@@ -212,12 +239,11 @@ void Epd::EPD_7IN3F_Display(const UBYTE *image) {
     for(i=0; i<height; i++) {
         for(j=0; j<width/2; j++) {
             SendData(image[j + width*i]);
-		}
+          }
     }
     
     TurnOnDisplay();
 }
-
 /******************************************************************************
 function :  Sends the part image buffer in RAM to e-Paper and displays
 parameter:
@@ -233,10 +259,10 @@ void Epd::EPD_7IN3F_Display_part(const UBYTE *image, UWORD xstart, UWORD ystart,
             if(i<image_heigh+ystart && i>=ystart && j<(image_width+xstart)/2 && j>=xstart/2) {
               SendData(pgm_read_byte(&image[(j-xstart/2) + (image_width/2*(i-ystart))]));
             }
-			      else {
-				      SendData(0x11);
-			      }
-		    }
+                  else {
+                      SendData(0x11);
+                  }
+            }
     }
     TurnOnDisplay();
 }
@@ -280,8 +306,8 @@ void Epd::Clear(UBYTE color) {
     for(int i=0; i<(int)(width/2); i++) {
         for(int j=0; j<(int)height; j++) {
             SendData((color<<4)|color);
-		}
-	}
+        }
+    }
     
     TurnOnDisplay();
 }
@@ -297,7 +323,7 @@ void Epd::Sleep(void) {
     SendCommand(0x07);
     SendData(0xA5);
     DelayMs(10);
-	  DigitalWrite(RST_PIN, 0); // Reset
+    DigitalWrite(RST_PIN, 0); // Reset
 }
 
 

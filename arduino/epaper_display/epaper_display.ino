@@ -48,6 +48,7 @@ SOFTWARE.
 int get_next_file_handle(SDFile &sdFile);
 inline void beginSpiTransaction() __attribute__((always_inline));
 inline void endSpiTransaction() __attribute__((always_inline));
+void sendQuarterRow(Epd *pEpd, char *buffer);
 
 // Global variables
 int sleep_loops = 0;
@@ -106,7 +107,7 @@ void updateDisplayWithNewPicture() {
   SDFile bmpFile;
 
   Debug::print("epd.Init()\r\n");
-  if (epd.Init() != 0) {
+  if (epd.Init() != SUCCESS) {
     Debug::print("e-Paper init failed\r\n");
     Debug::error(ERRORCODE_EPAPER_INIT_FAILED);
     return;
@@ -247,7 +248,7 @@ int getNextFileHandle(SDFile &sdFile) {
   @retval FAILURE
 ******************************************************************************/
 int displayImage(Epd * pEpd, SDFile & bmpFile) {
-
+  int ret = SUCCESS;
   // Send the command to start writing the data buffer.
   Debug::print("pEpd->SendCommand(0x10)\r\n");
   beginSpiTransaction();
@@ -259,17 +260,15 @@ int displayImage(Epd * pEpd, SDFile & bmpFile) {
 
   if (readbmp.parseHeader() != SUCCESS) {
     // Close the data file
-    bmpFile.close();
-    return FAILURE;
+    ret = FAILURE;
+    goto display_image_cleanup;
   }
 
   if(readbmp.width() != EPD_WIDTH || readbmp.height() != EPD_HEIGHT ) {
     Debug::print("Invalid image size.\r\n");
     Debug::error(ERRORCODE_BMP_INVALID_IMAGE_SIZE);
-
-    // Close the data file
-    bmpFile.close();
-    return FAILURE;
+    ret = FAILURE;
+    goto display_image_cleanup;
   }
 
   {
@@ -278,7 +277,8 @@ int displayImage(Epd * pEpd, SDFile & bmpFile) {
       for(int quarter = 0; quarter < 4 ; quarter++) {
         // Read in one half row of data. Callee handles error message.
         if(readbmp.readQuarterLine(quarterLineBuffer) == FAILURE) {
-          return FAILURE;
+          ret = FAILURE;
+          goto display_image_cleanup;
         }
 
         beginSpiTransaction();
@@ -291,14 +291,20 @@ int displayImage(Epd * pEpd, SDFile & bmpFile) {
 
   // Debug::print("pEpd->TurnOnDisplay()\r\n");
   beginSpiTransaction();
-  pEpd->TurnOnDisplay();
+  ret = pEpd->TurnOnDisplay();
+  if( ret== FAILURE) {
+    Debug::print("TurnOnDisplay Failed\r\n.");
+    Debug::error(ERRORCODE_EPAPER_FAILED_TURN_ON_DISPLAY);
+  }
+
   endSpiTransaction();
 
+display_image_cleanup:
   // Close the data file
   bmpFile.close();
 
   // Show the image.
-  return SUCCESS;
+  return ret;
 }
 
 /******************************************************************************

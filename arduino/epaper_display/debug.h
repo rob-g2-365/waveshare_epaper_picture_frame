@@ -34,17 +34,18 @@ SOFTWARE.
 #define FAILURE 1
 
 
-#define ERRORCODE_TEST                        0
-#define ERRORCODE_EPAPER_INIT_FAILED          0x101
-#define ERRORCODE_SD_FAILED_TO_OPEN_FILE      0x201
-#define ERRORCODE_SD_FAILED_TO_OPEN_ANY_FILE  0x202
-#define ERRORCODE_SD_FAILED_TO_SEEK           0x203
-#define ERRORCODE_BMP_FAILED_TO_READ_LINE     0x301
-#define ERRORCODE_BMP_FAILED_TO_READ_HEADER   0x302
-#define ERRORCODE_BMP_HEADER_FIELD_PROB       0x303
-#define ERRORCODE_BMP_INVALID_BITS_PER_PIXEL  0x304
-#define ERRORCODE_BMP_INVALID_IMAGE_SIZE      0x305
-#define ERRORCODE_NONE                        -1
+#define ERRORCODE_TEST                              0
+#define ERRORCODE_EPAPER_INIT_FAILED                0x101
+#define ERRORCODE_EPAPER_FAILED_TURN_ON_DISPLAY     0x102
+#define ERRORCODE_SD_FAILED_TO_OPEN_FILE            0x201
+#define ERRORCODE_SD_FAILED_TO_OPEN_ANY_FILE        0x202
+#define ERRORCODE_SD_FAILED_TO_SEEK                 0x203
+#define ERRORCODE_BMP_FAILED_TO_READ_LINE           0x301
+#define ERRORCODE_BMP_FAILED_TO_READ_HEADER         0x302
+#define ERRORCODE_BMP_HEADER_FIELD_PROB             0x303
+#define ERRORCODE_BMP_INVALID_BITS_PER_PIXEL        0x304
+#define ERRORCODE_BMP_INVALID_IMAGE_SIZE            0x305
+#define ERRORCODE_NONE                              -1
 
 // Include this flag to turn on serial logging.
 // #define SERIAL_DEBUG
