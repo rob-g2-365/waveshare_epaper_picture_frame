@@ -38,6 +38,7 @@ SOFTWARE.
 #define MAX_ERROR_MSG_SIZE        25
 class EepromData {
   public:
+    static void clearEepromData();
     static void savePictureIndex();
     static int readPictureIndex();
     static void saveErrorPicIndex();

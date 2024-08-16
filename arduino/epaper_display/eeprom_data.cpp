@@ -38,6 +38,15 @@ SOFTWARE.
 #include "picture_index.h"
 
 /******************************************************************************
+  Clears the EEPROM to the un-initialized state.
+
+******************************************************************************/
+void EepromData::clearEepromData() {
+  EEPROM.put(EEPROM_ADDRESS_PIC_INDEX, -1);
+  EEPROM.put(EEPROM_ADDRESS_ERROR_INDEX, -1);
+}
+
+/******************************************************************************
   Save the last picture index to the eeprom.
 
   @param[in]  picIndex
