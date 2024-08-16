@@ -29,6 +29,7 @@ SOFTWARE.
 #define _H_PICTURE_INDEX
 
 #define MAX_8_3_FILENAME_SIZE 13
+#define MAX_PICTURE_INDEX     999
 
 class PictureIndex {
   public:
@@ -37,7 +38,7 @@ class PictureIndex {
       pictureIndex = 0;
     }
     static inline void incrementPictureIndex() {
-      pictureIndex++;
+      pictureIndex = inRange(pictureIndex + 1);
     }
 
     static inline void updateInUsePictureIndex() {
@@ -49,13 +50,19 @@ class PictureIndex {
     }
 
     static inline void setPictureIndex(int pictureIndex) {
-      PictureIndex::pictureIndex = pictureIndex;
+      PictureIndex::pictureIndex = inRange(pictureIndex);
     }
 
     static inline int getInUsePictureIndex() {
       return inUsePictureIndex;
     }
   private:
+    static inline int inRange(int index) {
+      if(index > MAX_PICTURE_INDEX || index < 0) {
+        index = 0;
+      }
+      return index;
+    }
     static int pictureIndex;
     static int inUsePictureIndex;
 };
