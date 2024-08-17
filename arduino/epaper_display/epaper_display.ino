@@ -28,6 +28,7 @@ SOFTWARE.
 #include <LowPower.h>
 #include <SPI.h>
 #include <EEPROM.h>
+#include <avr/pgmspace.h>
 #include "epd7in3f.h"
 #include "epdif.h"
 #include "read_bmp.h"
@@ -67,9 +68,9 @@ void setup() {
   int pictureIndex = EepromData::readPictureIndex();
 
   #ifdef SERIAL_DEBUG
-  Serial.print("Starting off from picture index ");
+  Debug::printProgMem(PSTR("Starting off from picture index "));
   Serial.print(pictureIndex, DEC);
-  Serial.print(".\r\n");
+  Serial.print("\r\n");
   #endif // SERIAL_DEBUG
 
   PictureIndex::setPictureIndex(pictureIndex);
@@ -88,13 +89,13 @@ void loop() {
   powerDownPeripherals();
 
   while(sleep_loops < NUMBER_OF_SLEEP_LOOPS) {
-    Debug::print("Sleeping\r\n");
+    Debug::printProgMem(PSTR("Sleeping\r\n"));
 
     Debug::serialFlush();
     LowPower.powerDown(SLEEP_8S, ADC_OFF, BOD_OFF); 
     sleep_loops++;
 
-    Debug::print("Waking\r\n");
+    Debug::printProgMem(PSTR("Waking\r\n"));
   }
   sleep_loops = 0;
 }
@@ -106,15 +107,15 @@ void updateDisplayWithNewPicture() {
   Epd epd;
   SDFile bmpFile;
 
-  Debug::print("epd.Init()\r\n");
+  Debug::printProgMem(PSTR("epd.Init()\r\n"));
   if (epd.Init() != SUCCESS) {
-    Debug::print("e-Paper init failed\r\n");
+    Debug::printProgMem(PSTR("e-Paper init failed.\r\n"));
     Debug::error(ERRORCODE_EPAPER_INIT_FAILED);
     return;
   }
 
   // Clear the display.
-  Debug::print("e-Paper Clear\r\n");
+  Debug::printProgMem(PSTR("e-Paper Clear\r\n"));
   beginSpiTransaction();
   epd.Clear(EPD_7IN3F_WHITE);
   endSpiTransaction();
@@ -124,14 +125,14 @@ void updateDisplayWithNewPicture() {
     goto end_serial;
   }
 
-  Debug::print("Display Image\r\n");
+  Debug::printProgMem(PSTR("Display Image\r\n"));
   displayImage(&epd, bmpFile);
   // epd.EPD_7IN3F_Show7Block();
 
   // Delay 3 seconds while the image shows on the screen.
   delay(3000);
 
-  Debug::print("Goto Sleep...\r\n");
+  Debug::printProgMem(PSTR("Goto Sleep...\r\n"));
   beginSpiTransaction();
   epd.Sleep();
   endSpiTransaction();
@@ -193,15 +194,15 @@ int getNextFileHandle(SDFile &sdFile) {
   char filename[MAX_8_3_FILENAME_SIZE];
 
   // Get the next filename.
-  Debug::print("Get the next filename\r\n");
+  Debug::printProgMem(PSTR("Get the next filename\r\n"));
   PictureIndex::getBmpFilename(filename);
 
-  Debug::print("Opening file ");
+  Debug::printProgMem(PSTR("Opening file "));
   Debug::print(filename);
   Debug::print("\r\n");
   sdFile = SD.open(filename, FILE_READ);
   if(sdFile) {
-    Debug::print("File opened.\r\n");
+    Debug::printProgMem(PSTR("File opened.\r\n"));
     PictureIndex::incrementPictureIndex();
     EepromData::savePictureIndex();
     return SUCCESS;
@@ -209,11 +210,11 @@ int getNextFileHandle(SDFile &sdFile) {
 
   if(PictureIndex::getPictureIndex()==0) {
     // Do not log the first picture to the eeprom because this is easy to reproduce.
-    Debug::print("Failed to open file pic_000.bmp.\r\n");
+    Debug::printProgMem(PSTR("Failed to open file pic_000.bmp.\r\n"));
     return FAILURE;
   } 
 
-  Debug::print("Failed to open file.\r\n");
+  Debug::printProgMem(PSTR("Failed to open file.\r\n"));
   sdFile.close();
 
   // Sent the picture index to the original.
@@ -221,18 +222,18 @@ int getNextFileHandle(SDFile &sdFile) {
   PictureIndex::updateInUsePictureIndex();
   PictureIndex::getBmpFilename(filename);
 
-  Debug::print("Opening file ");
+  Debug::printProgMem(PSTR("Opening file "));
   Debug::print(filename);
-  Debug::print("\r\n");
+  Debug::printProgMem(PSTR("\r\n"));
   sdFile = SD.open(filename, FILE_READ);
   if(sdFile) {
-    Debug::print("File opened.");
+    Debug::printProgMem(PSTR("File opened."));
     PictureIndex::incrementPictureIndex();
     EepromData::savePictureIndex();
     return SUCCESS;
   }
 
-  Debug::print("Failed to open any bmp file.\r\n");
+  Debug::printProgMem(PSTR("Failed to open any bmp file.\r\n"));
   return FAILURE;
 }
 
@@ -250,7 +251,7 @@ int getNextFileHandle(SDFile &sdFile) {
 int displayImage(Epd * pEpd, SDFile & bmpFile) {
   int ret = SUCCESS;
   // Send the command to start writing the data buffer.
-  Debug::print("pEpd->SendCommand(0x10)\r\n");
+  Debug::printProgMem(PSTR("pEpd->SendCommand(0x10)\r\n"));
   beginSpiTransaction();
   pEpd->SendCommand(0x10);
   endSpiTransaction();
@@ -265,7 +266,7 @@ int displayImage(Epd * pEpd, SDFile & bmpFile) {
   }
 
   if(readbmp.width() != EPD_WIDTH || readbmp.height() != EPD_HEIGHT ) {
-    Debug::print("Invalid image size.\r\n");
+    Debug::printProgMem(("Invalid image size.\r\n"));
     Debug::error(ERRORCODE_BMP_INVALID_IMAGE_SIZE);
     ret = FAILURE;
     goto display_image_cleanup;
@@ -289,11 +290,11 @@ int displayImage(Epd * pEpd, SDFile & bmpFile) {
     }
   }
 
-  // Debug::print("pEpd->TurnOnDisplay()\r\n");
+  Debug::printProgMem(PSTR("pEpd->TurnOnDisplay()\r\n"));
   beginSpiTransaction();
   ret = pEpd->TurnOnDisplay();
   if( ret== FAILURE) {
-    Debug::print("TurnOnDisplay Failed\r\n.");
+    Debug::printProgMem(PSTR("TurnOnDisplay Failed\r\n."));
     Debug::error(ERRORCODE_EPAPER_FAILED_TURN_ON_DISPLAY);
   }
 

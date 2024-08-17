@@ -54,11 +54,10 @@ SOFTWARE.
 class Debug {
   public:
     static void print(const char * msg );
+    static void printProgMem(const PROGMEM char *msg);
     static void serialBegin(int baud_rate) ;
     static void serialFlush();
     static void error(int errorCode);
     static void printEepromErrorInfo();
 };
-
-
 #endif // _H_ERROR_CODE

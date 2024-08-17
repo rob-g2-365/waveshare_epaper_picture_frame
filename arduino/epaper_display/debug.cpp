@@ -28,6 +28,7 @@ SOFTWARE.
 ******************************************************************************/
 
 #include <Arduino.h>
+#include <avr/pgmspace.h>
 #include "debug.h"
 #include "eeprom_data.h"
 
@@ -51,8 +52,20 @@ void Debug::print(const char * msg) {
 #endif // SERIAL_DEBUG
 }
 
-void Debug::error(int errorCode) {
+void Debug::printProgMem(const PROGMEM char * msg) {
+#ifdef SERIAL_DEBUG 
+  uint8_t val;
+  while (true) {
+    val=pgm_read_byte(msg);
+    if (!val) 
+      break;
+    Serial.write(val);
+    msg++;
+  }
+#endif //SERIAL_DEBUG
+}
 
+void Debug::error(int errorCode) {
 #ifdef EEPROM_DEBUG
   EepromData::saveErrorPicIndex();
   EepromData::saveErrorCode(errorCode);
@@ -67,12 +80,12 @@ void Debug::printEepromErrorInfo() {
     return;
   }
 
-  Serial.print("EEPROM Error Code: 0x");
+  Debug::printProgMem(PSTR("EEPROM Error Code: 0x"));
   Serial.print(errorCode, HEX);
   Serial.print("\r\n");
 
   int errorPictureIndex = EepromData::readErrorPicIndex();
-  Serial.print("EEPROM Error Pic Index: ");
+  Debug::printProgMem(PSTR("EEPROM Error Pic Index: "));
   Serial.print(errorPictureIndex, DEC);
   Serial.print("\r\n");
   #endif // defined(SERIAL_DEBUG) && defined(EEPROM_DEBUG)

@@ -33,6 +33,7 @@ SOFTWARE.
 #include <EEPROM.h>
 #include <string.h>
 #include <Arduino.h>
+#include <avr/pgmspace.h>
 #include "eeprom_data.h"
 #include "debug.h"
 #include "picture_index.h"

@@ -42,7 +42,7 @@ void PictureIndex::getBmpFilename(char * filename) {
   filename[2] = 'c';
   filename[3] = '_';
   filename[4] = '0' + ((pictureIndex / 100) % 10);
-  filename[5] = '0' + (((pictureIndex % 100) / 10) % 10);
+  filename[5] = '0' + ((pictureIndex / 10) % 10);
   filename[6] = '0' + (pictureIndex % 10);
   filename[7] = '.';
   filename[8] = 'b';
