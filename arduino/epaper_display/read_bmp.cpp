@@ -53,7 +53,7 @@ int ReadBMP::readQuarterLine(char * buffer) {
   int quarterLineSize = (m_width /4)  * m_bits_per_pixel / 8;
   if(quarterLineSize != m_file->read(buffer, quarterLineSize)) {
     Debug::error(ERRORCODE_BMP_FAILED_TO_READ_LINE);
-    Debug::print("Failed to read bmp line.\r\n");
+    Debug::printProgMem(PSTR("Failed to read bmp line.\r\n"));
     return FAILURE;
   }
 
@@ -85,7 +85,7 @@ int ReadBMP::parseHeader() {
   header_size = m_file->read(&header, sizeof(BmpHeader));
   if(header_size !=sizeof(BmpHeader)) {
     Debug::error(ERRORCODE_BMP_FAILED_TO_READ_HEADER);
-    Debug::print("Failed to read bmp header. header size = ");
+    Debug::printProgMem(PSTR("Failed to read bmp header. header size = "));
     Serial.print(header_size, HEX);
     Serial.print("\r\n");
     return FAILURE;
@@ -93,13 +93,13 @@ int ReadBMP::parseHeader() {
 
   if(header.header_field != BMP_HEADER_FIELD_WIN) {
     Debug::error(ERRORCODE_BMP_HEADER_FIELD_PROB);
-    Debug::print("Header field not correct.\r\n");
+    Debug::printProgMem(PSTR("Header field not correct.\r\n"));
     return FAILURE;
   }
 
   if( header.bits_per_pixel != 4 && header.bits_per_pixel != 8) {
     Debug::error(ERRORCODE_BMP_INVALID_BITS_PER_PIXEL);
-    Debug::print("Invalid number of bits per pixel.\r\n");
+    Debug::printProgMem(PSTR("Invalid number of bits per pixel.\r\n"));
     return FAILURE;
   }
 
@@ -109,7 +109,7 @@ int ReadBMP::parseHeader() {
 
   if(!m_file->seek(header.offset)) {
     Debug::error(ERRORCODE_SD_FAILED_TO_SEEK);
-    Debug::print("Failed to seek\r\n");
+    Debug::printProgMem(PSTR("Failed to seek\r\n"));
     return FAILURE;
   }
 

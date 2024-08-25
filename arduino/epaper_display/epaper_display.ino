@@ -41,9 +41,11 @@ SOFTWARE.
 #define PIN_POWER_SELECT    5
 #define PIN_SD_CHIP_SELECT  6
 #define PIN_MOSI            11
+#define PIN_SCLK            13
 
 #define SECONDS_IN_A_DAY  86400
-#define NUMBER_OF_SLEEP_LOOPS 10800  // Seconds in a day divided by 8s
+#define SECONDS_TO_DISPLAY 135
+#define NUMBER_OF_SLEEP_LOOPS   ((SECONDS_IN_A_DAY - SECONDS_TO_DISPLAY)/8)
 
 // Function declarations.
 int get_next_file_handle(SDFile &sdFile);
@@ -104,6 +106,7 @@ void loop() {
   Update the display with a new picture
 ******************************************************************************/
 void updateDisplayWithNewPicture() {
+  bool bmpFileInit = false;
   Epd epd;
   SDFile bmpFile;
 
@@ -121,9 +124,11 @@ void updateDisplayWithNewPicture() {
   endSpiTransaction();
 
   SD.begin(SPI_QUARTER_SPEED, PIN_SD_CHIP_SELECT);
+  // getNextFileHandle has the error handling code in it.
   if( getNextFileHandle(bmpFile) == FAILURE) {
-    goto end_serial;
+    goto cleanup;
   }
+  bmpFileInit = true;
 
   Debug::printProgMem(PSTR("Display Image\r\n"));
   displayImage(&epd, bmpFile);
@@ -132,16 +137,18 @@ void updateDisplayWithNewPicture() {
   // Delay 3 seconds while the image shows on the screen.
   delay(3000);
 
-  Debug::printProgMem(PSTR("Goto Sleep...\r\n"));
+cleanup:  
+  Debug::printProgMem(PSTR("EPaper Sleep...\r\n"));
   beginSpiTransaction();
   epd.Sleep();
   endSpiTransaction();
 
   // Close the file handle.
-  bmpFile.close();
+  if(bmpFileInit) {
+    bmpFile.close();
+  }
 
-
-end_serial:  
+  // Close the SD Card.
   SD.end();
   PictureIndex::updateInUsePictureIndex();
 }
@@ -150,35 +157,64 @@ end_serial:
   Power up the SDCARD and E-Hat
 ******************************************************************************/
 void powerUpPeripherals() {
-  // Set MOSI as an output.  When powered down it is set to an input to 
-  // conserve power.
-  pinMode(PIN_MOSI, OUTPUT);
+  Debug::printProgMem(PSTR("powerUpPeripherals\r\n"));
 
-  // Set the CS pin high so the peripherals don't start reading the SPI bus
-  // when powered up.
+  // Set the SDCARD CS, SCLK and MOSI pins high so the SD CARD doesn't start 
+  // reading the SPI bus when powered up. Flush every debug serial port 
+  // transaction so that if there is a problem the last message is logged.
+  Debug::printProgMem(PSTR("pinMode(PIN_SD_CHIP_SELECT, OUTPUT)\r\n"));
+  Serial.flush();
+  pinMode(PIN_SD_CHIP_SELECT, OUTPUT);
+
+  Debug::printProgMem(PSTR("digitalWrite(PIN_SD_CHIP_SELECT, HIGH)\r\n"));
+  Serial.flush();
   digitalWrite(PIN_SD_CHIP_SELECT, HIGH);
 
+  Debug::printProgMem(PSTR("pinMode(PIN_SCLK, OUTPUT)\r\n"));
+  Serial.flush();
+  pinMode(PIN_SCLK, OUTPUT);
+
+  Debug::printProgMem(PSTR("digitalWrite(PIN_SCLK, HIGH)\r\n"));
+  Serial.flush();
+  digitalWrite(PIN_SCLK, HIGH);
+  
+  Debug::printProgMem(PSTR("pinMode(PIN_MOSI, OUTPUT)\r\n"));
+  Serial.flush();
+  pinMode(PIN_MOSI, OUTPUT);
+
+  Debug::printProgMem(PSTR("digitalWrite(PIN_MOSI, HIGH)\r\n"));
+  Serial.flush();
+  digitalWrite(PIN_MOSI, HIGH);
+
+
   // Turn on the peripheral power by setting power select low.
+  Debug::printProgMem(PSTR("pinMode(PIN_POWER_SELECT, OUTPUT)\r\n"));
+  Serial.flush();
   pinMode(PIN_POWER_SELECT, OUTPUT);
   digitalWrite(PIN_POWER_SELECT, LOW);
 
   // Allow a small delay for the peripherals to get power.
-  delay(500);
+  Debug::printProgMem(PSTR("delay(2)\r\n"));
+  delay(2);
+
+  Debug::printProgMem(PSTR("-powerUpPeripherals\r\n"));
 }
 
 /******************************************************************************
   Power down the SDCARD and E-Hat
 ******************************************************************************/
 void powerDownPeripherals() {
+  Debug::printProgMem(PSTR("powerDownPeripherals\r\n"));
   // Turn off the peripheral power by setting the power select GPIO high.  
   // The power will remain off while sleeping.
   digitalWrite(PIN_POWER_SELECT, HIGH);
+
   
-  // If MOSI or the CS lines are high, the SD Card board will draw power on some
-  // SD Card boards.  This can be prevented by setting MOSI as an input and 
-  // SD CS low.
+  // If SCLK, MOSI or the CS lines are high, the SD Card board will draw power on some
+  // SD Card boards.  This can be prevented by setting these lines as inputs.
+  pinMode(PIN_SCLK, INPUT);
   pinMode(PIN_MOSI, INPUT);
-  digitalWrite(PIN_SD_CHIP_SELECT, LOW);
+  pinMode(PIN_SD_CHIP_SELECT, INPUT);
 }
 
 /******************************************************************************

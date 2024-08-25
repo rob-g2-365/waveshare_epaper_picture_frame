@@ -31,6 +31,7 @@ SOFTWARE.
 #include <avr/pgmspace.h>
 #include "debug.h"
 #include "eeprom_data.h"
+#include "picture_index.h"
 
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 
@@ -70,16 +71,26 @@ void Debug::error(int errorCode) {
   EepromData::saveErrorPicIndex();
   EepromData::saveErrorCode(errorCode);
 #endif // EEPROM_DEBUG
+#ifdef SERIAL_DEBUG
+  Debug::printProgMem(PSTR("Logging EEPROM error code and picture index.\r\n"));
+  Debug::printErrorAndPicIndex(errorCode, PictureIndex::getPictureIndex());
+#endif //SERIAL_DEBUG  
 }
 
 void Debug::printEepromErrorInfo() {
 #if defined(SERIAL_DEBUG) && defined(EEPROM_DEBUG)
+  Debug::printProgMem(PSTR("Reading error code and picture index from EEPROM.\r\n"));
   int errorCode = EepromData::readErrorCode();
   if(errorCode == ERRORCODE_NONE) {
-    Serial.print("No EEPROM Error logged.\r\n");
+    Debug::printProgMem(PSTR("No EEPROM Error logged.\r\n"));
     return;
   }
+  int errorPictureIndex = EepromData::readErrorPicIndex();
+  printErrorAndPicIndex(errorCode, errorPictureIndex);
+#endif // defined(SERIAL_DEBUG) && defined(EEPROM_DEBUG)
+}
 
+void Debug::printErrorAndPicIndex(int errorCode, int picIndex) {
   Debug::printProgMem(PSTR("EEPROM Error Code: 0x"));
   Serial.print(errorCode, HEX);
   Serial.print("\r\n");
@@ -88,5 +99,4 @@ void Debug::printEepromErrorInfo() {
   Debug::printProgMem(PSTR("EEPROM Error Pic Index: "));
   Serial.print(errorPictureIndex, DEC);
   Serial.print("\r\n");
-  #endif // defined(SERIAL_DEBUG) && defined(EEPROM_DEBUG)
 }

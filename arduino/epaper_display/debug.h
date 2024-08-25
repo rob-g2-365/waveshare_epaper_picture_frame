@@ -59,5 +59,7 @@ class Debug {
     static void serialFlush();
     static void error(int errorCode);
     static void printEepromErrorInfo();
+  private:
+    static void printErrorAndPicIndex(int errorCode, int pictureIndex);
 };
 #endif // _H_ERROR_CODE
