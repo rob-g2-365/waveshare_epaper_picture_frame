@@ -98,4 +98,4 @@ def auto_contrast(img):
 
 
 def saturation(img):
-    return ImageEnhance.Color(img).enhance(2)
+    return ImageEnhance.Color(img).enhance(2.5)
