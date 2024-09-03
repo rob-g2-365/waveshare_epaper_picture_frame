@@ -54,7 +54,7 @@ inline void endSpiTransaction() __attribute__((always_inline));
 void sendQuarterRow(Epd *pEpd, char *buffer);
 
 // Global variables
-int sleep_loops = 0;
+long sleep_loops = 0;
 
 /******************************************************************************
 function : 
